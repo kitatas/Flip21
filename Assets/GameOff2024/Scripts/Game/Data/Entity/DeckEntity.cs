@@ -6,6 +6,7 @@ namespace GameOff2024.Game.Data.Entity
     public sealed class DeckEntity
     {
         private readonly List<CardVO> _cards;
+        private int _index;
 
         public DeckEntity()
         {
@@ -20,10 +21,16 @@ namespace GameOff2024.Game.Data.Entity
             }
         }
 
+        public void Refresh()
+        {
+            _index = 0;
+            Shuffle();
+        }
+
         /// <summary>
         /// Fisher-Yates shuffle
         /// </summary>
-        public void Shuffle()
+        private void Shuffle()
         {
             for (int i = _cards.Count - 1; i > 0; i--)
             {
@@ -31,5 +38,7 @@ namespace GameOff2024.Game.Data.Entity
                 (_cards[i], _cards[j]) = (_cards[j], _cards[i]);
             }
         }
+
+        public int Draw() => _index++;
     }
 }
