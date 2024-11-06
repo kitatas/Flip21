@@ -1,3 +1,4 @@
+using GameOff2024.Game.Data.Entity;
 using GameOff2024.Game.Domain.UseCase;
 using GameOff2024.Game.Presentation.Presenter;
 using GameOff2024.Game.Presentation.State;
@@ -10,7 +11,11 @@ namespace GameOff2024.Game.Installer
     {
         protected override void Configure(IContainerBuilder builder)
         {
+            // Entity
+            builder.Register<DeckEntity>(Lifetime.Scoped);
+
             // UseCase
+            builder.Register<DealUseCase>(Lifetime.Scoped);
             builder.Register<StateUseCase>(Lifetime.Scoped);
 
             // Presenter
