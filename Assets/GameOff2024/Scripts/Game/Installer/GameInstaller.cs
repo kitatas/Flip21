@@ -1,5 +1,6 @@
 using GameOff2024.Game.Domain.UseCase;
 using GameOff2024.Game.Presentation.Presenter;
+using GameOff2024.Game.Presentation.State;
 using VContainer;
 using VContainer.Unity;
 
@@ -17,6 +18,9 @@ namespace GameOff2024.Game.Installer
             {
                 entryPoints.Add<StatePresenter>();
             });
+
+            // State
+            builder.Register<BaseState, InitState>(Lifetime.Scoped);
         }
     }
 }

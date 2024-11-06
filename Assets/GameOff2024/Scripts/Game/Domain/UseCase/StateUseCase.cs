@@ -8,7 +8,7 @@ namespace GameOff2024.Game.Domain.UseCase
 
         public StateUseCase()
         {
-            _state = new ReactiveProperty<GameState>(GameState.None);
+            _state = new ReactiveProperty<GameState>(GameConfig.INIT_STATE);
         }
 
         public Observable<GameState> state => _state.Where(x => x != GameState.None);
