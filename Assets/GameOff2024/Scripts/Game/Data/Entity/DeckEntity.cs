@@ -40,5 +40,7 @@ namespace GameOff2024.Game.Data.Entity
         }
 
         public int Draw() => _index++;
+
+        public CardVO GetCard(int index) => _cards[index];
     }
 }

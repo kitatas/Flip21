@@ -18,6 +18,7 @@ namespace GameOff2024.Game.Installer
 
             // UseCase
             builder.Register<DealUseCase>(Lifetime.Scoped);
+            builder.Register<HandUseCase>(Lifetime.Scoped);
             builder.Register<StateUseCase>(Lifetime.Scoped);
 
             // Presenter

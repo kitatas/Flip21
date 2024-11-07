@@ -11,4 +11,16 @@ namespace GameOff2024.Game
             this.rank = rank;
         }
     }
+
+    public sealed class HandVO
+    {
+        public readonly int index;
+        public readonly CardVO card;
+
+        public HandVO(int index, CardVO card)
+        {
+            this.index = index;
+            this.card = card;
+        }
+    }
 }
