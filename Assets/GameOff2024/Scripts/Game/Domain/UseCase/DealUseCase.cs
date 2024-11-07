@@ -5,24 +5,19 @@ namespace GameOff2024.Game.Domain.UseCase
     public sealed class DealUseCase
     {
         private readonly DeckEntity _deckEntity;
-        private HandEntity _playerHandEntity;
-        private HandEntity _enemyHandEntity;
+        private readonly PlayerHandEntity _playerHandEntity;
+        private readonly EnemyHandEntity _enemyHandEntity;
 
-        public DealUseCase(DeckEntity deckEntity)
+        public DealUseCase(DeckEntity deckEntity, PlayerHandEntity playerHandEntity, EnemyHandEntity enemyHandEntity)
         {
             _deckEntity = deckEntity;
+            _playerHandEntity = playerHandEntity;
+            _enemyHandEntity = enemyHandEntity;
         }
 
         public void SetUp()
         {
             _deckEntity.Refresh();
-            InitHand();
-        }
-
-        private void InitHand()
-        {
-            _playerHandEntity = new HandEntity();
-            _enemyHandEntity = new HandEntity();
 
             // 初期カード配布
             DealToPlayer();
