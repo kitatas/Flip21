@@ -12,11 +12,13 @@ namespace GameOff2024.Game.Installer
         protected override void Configure(IContainerBuilder builder)
         {
             // Entity
+            builder.Register<ChipEntity>(Lifetime.Scoped);
             builder.Register<EnemyHandEntity>(Lifetime.Scoped);
             builder.Register<DeckEntity>(Lifetime.Scoped);
             builder.Register<PlayerHandEntity>(Lifetime.Scoped);
 
             // UseCase
+            builder.Register<ChipUseCase>(Lifetime.Scoped);
             builder.Register<DealUseCase>(Lifetime.Scoped);
             builder.Register<HandUseCase>(Lifetime.Scoped);
             builder.Register<StateUseCase>(Lifetime.Scoped);

@@ -17,4 +17,9 @@ namespace GameOff2024.Game
             Suit.Spade,
         };
     }
+
+    public sealed class ChipConfig
+    {
+        public const int INIT_VALUE = 10;
+    }
 }
