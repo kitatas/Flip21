@@ -2,6 +2,7 @@ using GameOff2024.Game.Data.Entity;
 using GameOff2024.Game.Domain.UseCase;
 using GameOff2024.Game.Presentation.Presenter;
 using GameOff2024.Game.Presentation.State;
+using GameOff2024.Game.Presentation.View;
 using VContainer;
 using VContainer.Unity;
 
@@ -26,11 +27,15 @@ namespace GameOff2024.Game.Installer
             // Presenter
             builder.UseEntryPoints(Lifetime.Scoped, entryPoints =>
             {
+                entryPoints.Add<ChipPresenter>();
                 entryPoints.Add<StatePresenter>();
             });
 
             // State
             builder.Register<BaseState, InitState>(Lifetime.Scoped);
+
+            // View
+            builder.RegisterComponentInHierarchy<ChipView>();
         }
     }
 }
