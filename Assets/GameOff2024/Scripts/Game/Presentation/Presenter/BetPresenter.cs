@@ -22,6 +22,14 @@ namespace GameOff2024.Game.Presentation.Presenter
                 .Subscribe(_betView.Render)
                 .AddTo(_betView);
 
+            _betUseCase.isPlus
+                .Subscribe(_betView.ActivatePlus)
+                .AddTo(_betView);
+
+            _betUseCase.isMinus
+                .Subscribe(_betView.ActivateMinus)
+                .AddTo(_betView);
+
             _betView.bet
                 .Subscribe(_betUseCase.Add)
                 .AddTo(_betView);

@@ -24,5 +24,15 @@ namespace GameOff2024.Game.Presentation.View
         {
             num.text = $"{value}";
         }
+
+        public void ActivatePlus(bool value)
+        {
+            plus.interactable = value;
+        }
+
+        public void ActivateMinus(bool value)
+        {
+            minus.interactable = value;
+        }
     }
 }
