@@ -19,6 +19,7 @@ namespace GameOff2024.Game.Installer
             builder.Register<PlayerHandEntity>(Lifetime.Scoped);
 
             // UseCase
+            builder.Register<BetUseCase>(Lifetime.Scoped);
             builder.Register<ChipUseCase>(Lifetime.Scoped);
             builder.Register<DealUseCase>(Lifetime.Scoped);
             builder.Register<HandUseCase>(Lifetime.Scoped);
@@ -27,6 +28,7 @@ namespace GameOff2024.Game.Installer
             // Presenter
             builder.UseEntryPoints(Lifetime.Scoped, entryPoints =>
             {
+                entryPoints.Add<BetPresenter>();
                 entryPoints.Add<ChipPresenter>();
                 entryPoints.Add<StatePresenter>();
             });
@@ -35,6 +37,7 @@ namespace GameOff2024.Game.Installer
             builder.Register<BaseState, InitState>(Lifetime.Scoped);
 
             // View
+            builder.RegisterComponentInHierarchy<BetView>();
             builder.RegisterComponentInHierarchy<ChipView>();
         }
     }
