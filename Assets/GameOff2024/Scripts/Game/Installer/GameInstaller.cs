@@ -3,6 +3,7 @@ using GameOff2024.Game.Domain.UseCase;
 using GameOff2024.Game.Presentation.Presenter;
 using GameOff2024.Game.Presentation.State;
 using GameOff2024.Game.Presentation.View;
+using GameOff2024.Game.Presentation.View.Modal;
 using VContainer;
 using VContainer.Unity;
 
@@ -23,6 +24,7 @@ namespace GameOff2024.Game.Installer
             builder.Register<ChipUseCase>(Lifetime.Scoped);
             builder.Register<DealUseCase>(Lifetime.Scoped);
             builder.Register<HandUseCase>(Lifetime.Scoped);
+            builder.Register<ModalUseCase>(Lifetime.Scoped);
             builder.Register<StateUseCase>(Lifetime.Scoped);
 
             // Presenter
@@ -30,6 +32,7 @@ namespace GameOff2024.Game.Installer
             {
                 entryPoints.Add<BetPresenter>();
                 entryPoints.Add<ChipPresenter>();
+                entryPoints.Add<ModalPresenter>();
                 entryPoints.Add<StatePresenter>();
             });
 

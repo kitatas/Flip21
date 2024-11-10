@@ -14,4 +14,9 @@ namespace GameOff2024.Game
         Heart = 3,
         Spade = 4,
     }
+
+    public enum GameModal
+    {
+        None = 0,
+    }
 }
