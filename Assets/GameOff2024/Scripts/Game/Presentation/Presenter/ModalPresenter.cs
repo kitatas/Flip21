@@ -36,11 +36,11 @@ namespace GameOff2024.Game.Presentation.Presenter
                 .ForEachAsync(x => x.Forget(), cancellationToken: token);
 
             _modalUseCase.gameModal
-                .Subscribe(x => ShowAsync(x, token).Forget())
+                .SubscribeAwait(async (x, ct) => await PopAsync(x, ct), AwaitOperation.Sequential)
                 .AddTo(token);
         }
 
-        private async UniTaskVoid ShowAsync(GameModal modal, CancellationToken token)
+        private async UniTask PopAsync(GameModal modal, CancellationToken token)
         {
             try
             {
