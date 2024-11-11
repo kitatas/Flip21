@@ -22,4 +22,9 @@ namespace GameOff2024.Game
     {
         public const int INIT_VALUE = 10;
     }
+
+    public sealed class ModalConfig
+    {
+        public const float DURATION = 0.25f;
+    }
 }

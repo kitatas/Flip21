@@ -12,32 +12,27 @@ namespace GameOff2024.Game.Presentation.View.Modal
 
         public virtual async UniTask InitAsync(CancellationToken token)
         {
-            Hide();
-            await UniTask.Yield(token);
+            await HideAsync(0.0f, token);
         }
 
-        public async UniTask ShowAsync(CancellationToken token)
+        public async UniTask PopAsync(float duration, CancellationToken token)
         {
-            Show();
-            await UniTask.Yield(token);
+            await ShowAsync(duration, token);
+            await HideAsync(duration, token);
         }
 
-        public async UniTask HideAsync(CancellationToken token)
-        {
-            Hide();
-            await UniTask.Yield(token);
-        }
-
-        public virtual void Show()
+        protected virtual async UniTask ShowAsync(float duration, CancellationToken token)
         {
             canvasGroup.alpha = 1.0f;
             canvasGroup.interactable = true;
+            await UniTask.Yield(token);
         }
 
-        public virtual void Hide()
+        protected virtual async UniTask HideAsync(float duration, CancellationToken token)
         {
             canvasGroup.alpha = 0.0f;
             canvasGroup.interactable = false;
+            await UniTask.Yield(token);
         }
     }
 }
