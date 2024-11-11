@@ -42,6 +42,9 @@ namespace GameOff2024.Game.Installer
             // View
             builder.RegisterComponentInHierarchy<BetView>();
             builder.RegisterComponentInHierarchy<ChipView>();
+
+            // Modal
+            builder.RegisterComponentInHierarchy<BetModalView>().As<BaseModalView>();
         }
     }
 }

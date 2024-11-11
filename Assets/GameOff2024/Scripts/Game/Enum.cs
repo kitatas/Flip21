@@ -18,5 +18,6 @@ namespace GameOff2024.Game
     public enum GameModal
     {
         None = 0,
+        Bet = 1,
     }
 }
