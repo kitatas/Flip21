@@ -52,6 +52,7 @@ namespace GameOff2024.Game.Presentation.Presenter
                 }
 
                 await currentModal.PopAsync(ModalConfig.DURATION, token);
+                _modalUseCase.Complete(true);
             }
             catch (Exception e)
             {
