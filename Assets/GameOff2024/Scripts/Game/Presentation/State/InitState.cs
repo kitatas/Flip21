@@ -25,7 +25,7 @@ namespace GameOff2024.Game.Presentation.State
             _dealUseCase.SetUp();
             await UniTask.Yield(token);
 
-            return GameState.None;
+            return GameState.Bet;
         }
     }
 }
