@@ -10,6 +10,7 @@ namespace GameOff2024.Game.Presentation.View
         [SerializeField] private TextMeshProUGUI num = default;
         [SerializeField] private Button plus = default;
         [SerializeField] private Button minus = default;
+        [SerializeField] private Button decision = default;
 
         private readonly Subject<int> _bet = new();
         public Observable<int> bet => _bet;
@@ -33,6 +34,7 @@ namespace GameOff2024.Game.Presentation.View
         public void ActivateMinus(bool value)
         {
             minus.interactable = value;
+            decision.interactable = value;
         }
     }
 }
