@@ -1,12 +1,14 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GameOff2024.Game.Presentation.View.Modal
 {
     public abstract class BaseModalView : MonoBehaviour
     {
         [SerializeField] protected CanvasGroup canvasGroup = default;
+        [SerializeField] protected Button decision = default;
 
         public abstract GameModal modal { get; }
 
@@ -18,6 +20,7 @@ namespace GameOff2024.Game.Presentation.View.Modal
         public async UniTask PopAsync(float duration, CancellationToken token)
         {
             await ShowAsync(duration, token);
+            await decision.OnClickAsync(token);
             await HideAsync(duration, token);
         }
 
