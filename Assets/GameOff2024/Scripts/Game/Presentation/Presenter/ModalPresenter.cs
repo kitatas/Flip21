@@ -35,7 +35,7 @@ namespace GameOff2024.Game.Presentation.Presenter
                 .ToUniTaskAsyncEnumerable()
                 .ForEachAsync(x => x.Forget(), cancellationToken: token);
 
-            _modalUseCase.gameModal
+            _modalUseCase.setup
                 .SubscribeAwait(async (x, ct) => await PopAsync(x, ct), AwaitOperation.Sequential)
                 .AddTo(token);
         }
