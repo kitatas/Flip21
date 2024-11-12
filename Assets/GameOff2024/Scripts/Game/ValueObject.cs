@@ -1,3 +1,6 @@
+using System;
+using UnityEngine;
+
 namespace GameOff2024.Game
 {
     public sealed class CardVO
@@ -9,6 +12,19 @@ namespace GameOff2024.Game
         {
             this.suit = suit;
             this.rank = rank;
+        }
+    }
+
+    [Serializable]
+    public sealed class SuitVO
+    {
+        public readonly Sprite icon;
+        public readonly Color color;
+
+        public SuitVO(Sprite icon, Color color)
+        {
+            this.icon = icon;
+            this.color = color;
         }
     }
 
