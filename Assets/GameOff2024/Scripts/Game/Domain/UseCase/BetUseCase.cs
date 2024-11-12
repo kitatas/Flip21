@@ -17,6 +17,7 @@ namespace GameOff2024.Game.Domain.UseCase
         public Observable<int> bet => _bet;
         public Observable<bool> isPlus => _bet.Select(x => x < _chipEntity.current);
         public Observable<bool> isMinus => _bet.Select(x => x > 0);
+        public int betValue => _bet.Value;
 
         public void Add(int value) => _bet.Value += value;
     }

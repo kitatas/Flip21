@@ -21,5 +21,7 @@ namespace GameOff2024.Game.Domain.UseCase
             _chipEntity.Add(value);
             _chip.Value = _chipEntity.current;
         }
+
+        public void Bet(int value) => Add(-value);
     }
 }

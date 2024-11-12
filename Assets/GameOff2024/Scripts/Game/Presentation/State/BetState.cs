@@ -7,10 +7,14 @@ namespace GameOff2024.Game.Presentation.State
 {
     public sealed class BetState : BaseState
     {
+        private readonly BetUseCase _betUseCase;
+        private readonly ChipUseCase _chipUseCase;
         private readonly ModalUseCase _modalUseCase;
 
-        public BetState(ModalUseCase modalUseCase)
+        public BetState(BetUseCase betUseCase, ChipUseCase chipUseCase, ModalUseCase modalUseCase)
         {
+            _betUseCase = betUseCase;
+            _chipUseCase = chipUseCase;
             _modalUseCase = modalUseCase;
         }
 
@@ -30,6 +34,8 @@ namespace GameOff2024.Game.Presentation.State
                 // TODO: Exception
                 throw new Exception();
             }
+
+            _chipUseCase.Bet(_betUseCase.betValue);
 
             return GameState.None;
         }
