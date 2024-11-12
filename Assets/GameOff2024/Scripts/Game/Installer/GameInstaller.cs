@@ -37,7 +37,6 @@ namespace GameOff2024.Game.Installer
             });
 
             // State
-            builder.Register<BaseState, InitState>(Lifetime.Scoped);
             builder.Register<BaseState, BetState>(Lifetime.Scoped);
 
             // View
