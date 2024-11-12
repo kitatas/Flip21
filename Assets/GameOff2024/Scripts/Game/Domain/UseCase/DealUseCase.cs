@@ -1,4 +1,5 @@
 using GameOff2024.Game.Data.Entity;
+using GameOff2024.Game.Domain.Repository;
 
 namespace GameOff2024.Game.Domain.UseCase
 {
@@ -7,12 +8,20 @@ namespace GameOff2024.Game.Domain.UseCase
         private readonly DeckEntity _deckEntity;
         private readonly PlayerHandEntity _playerHandEntity;
         private readonly EnemyHandEntity _enemyHandEntity;
+        private readonly SuitRepository _suitRepository;
 
-        public DealUseCase(DeckEntity deckEntity, PlayerHandEntity playerHandEntity, EnemyHandEntity enemyHandEntity)
+        public DealUseCase(DeckEntity deckEntity, PlayerHandEntity playerHandEntity, EnemyHandEntity enemyHandEntity,
+            SuitRepository suitRepository)
         {
             _deckEntity = deckEntity;
             _playerHandEntity = playerHandEntity;
             _enemyHandEntity = enemyHandEntity;
+            _suitRepository = suitRepository;
+        }
+
+        public void Init()
+        {
+            _deckEntity.Build(x => _suitRepository.Find(x).suitVO);
         }
 
         public void SetUp()

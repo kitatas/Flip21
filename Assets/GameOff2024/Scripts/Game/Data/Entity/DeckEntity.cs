@@ -1,5 +1,6 @@
+using System;
 using System.Collections.Generic;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GameOff2024.Game.Data.Entity
 {
@@ -11,12 +12,16 @@ namespace GameOff2024.Game.Data.Entity
         public DeckEntity()
         {
             _cards = new List<CardVO>(CardConfig.MAX_RANK * CardConfig.SUITS.Length);
+        }
 
+        public void Build(Func<Suit, SuitVO> findSuit)
+        {
             foreach (var suit in CardConfig.SUITS)
             {
+                var suitVo = findSuit?.Invoke(suit);
                 for (int i = 1; i <= CardConfig.MAX_RANK; i++)
                 {
-                    _cards.Add(new CardVO(suit, i));
+                    _cards.Add(new CardVO(suitVo, i));
                 }
             }
         }

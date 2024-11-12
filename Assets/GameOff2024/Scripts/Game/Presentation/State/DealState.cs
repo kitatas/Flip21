@@ -15,6 +15,12 @@ namespace GameOff2024.Game.Presentation.State
 
         public override GameState state => GameState.Deal;
 
+        public override async UniTask InitAsync(CancellationToken token)
+        {
+            _dealUseCase.Init();
+            await UniTask.Yield(token);
+        }
+
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
             _dealUseCase.SetUp();

@@ -5,10 +5,10 @@ namespace GameOff2024.Game
 {
     public sealed class CardVO
     {
-        public readonly Suit suit;
+        public readonly SuitVO suit;
         public readonly int rank;
 
-        public CardVO(Suit suit, int rank)
+        public CardVO(SuitVO suit, int rank)
         {
             this.suit = suit;
             this.rank = rank;
