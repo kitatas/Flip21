@@ -20,8 +20,11 @@ namespace GameOff2024.Game.Domain.UseCase
             _deckEntity.Refresh();
 
             // 初期カード配布
-            DealToPlayer();
-            DealToEnemy();
+            for (int i = 0; i < GameConfig.INIT_CARD_NUM; i++)
+            {
+                DealToPlayer();
+                DealToEnemy();
+            }
         }
 
         public void DealToPlayer()
