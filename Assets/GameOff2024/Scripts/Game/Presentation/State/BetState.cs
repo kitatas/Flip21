@@ -37,7 +37,7 @@ namespace GameOff2024.Game.Presentation.State
 
             _chipUseCase.Bet(_betUseCase.betValue);
 
-            return GameState.None;
+            return GameState.Deal;
         }
     }
 }
