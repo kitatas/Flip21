@@ -17,10 +17,11 @@ namespace GameOff2024.Game.Domain.UseCase
 
         public Observable<GameModal> setup => _setup.Where(x => x != GameModal.None);
 
-        public UniTask<bool> IsCompleteAsync(CancellationToken token) =>
-            _complete.AnyAsync(cancellationToken: token).AsUniTask();
-
-        public void SetUp(GameModal value) => _setup?.OnNext(value);
+        public async UniTask<bool> SetUpAsync(GameModal value, CancellationToken token)
+        {
+            _setup?.OnNext(value);
+            return await _complete.AnyAsync(cancellationToken: token).AsUniTask();
+        }
 
         public void Complete(bool value) => _complete?.OnNext(value);
     }
