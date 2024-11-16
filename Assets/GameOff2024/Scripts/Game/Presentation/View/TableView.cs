@@ -8,6 +8,14 @@ namespace GameOff2024.Game.Presentation.View
     public sealed class TableView : MonoBehaviour
     {
         [SerializeField] private CardView cardView = default;
+        [SerializeField] private HandView player = default;
+        [SerializeField] private HandView enemy = default;
+
+        public void Init()
+        {
+            player.Init();
+            enemy.Init();
+        }
 
         public async UniTask RenderPlayerHandsAsync(List<HandVO> playerHands, CancellationToken token)
         {
@@ -15,7 +23,7 @@ namespace GameOff2024.Game.Presentation.View
             {
                 var card = Instantiate(cardView, transform);
                 card.Render(playerHand.card);
-                await UniTask.Yield(token);
+                await player.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
             }
         }
 
@@ -25,7 +33,7 @@ namespace GameOff2024.Game.Presentation.View
             {
                 var card = Instantiate(cardView, transform);
                 card.Render(enemyHand.card);
-                await UniTask.Yield(token);
+                await enemy.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
             }
         }
     }

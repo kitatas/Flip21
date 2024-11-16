@@ -23,6 +23,7 @@ namespace GameOff2024.Game.Presentation.State
         public override async UniTask InitAsync(CancellationToken token)
         {
             _dealUseCase.Init();
+            _tableView.Init();
             await UniTask.Yield(token);
         }
 

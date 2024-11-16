@@ -1,4 +1,6 @@
+using DG.Tweening;
 using TMPro;
+using UniEx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +20,18 @@ namespace GameOff2024.Game.Presentation.View
             suit1.color = cardVO.suit.color;
             suit2.sprite = cardVO.suit.icon;
             suit2.color = cardVO.suit.color;
+        }
+
+        public Tween TweenX(float value, float duration)
+        {
+            return transform.ToRectTransform()
+                .DOAnchorPosX(value, duration);
+        }
+
+        public Tween TweenY(float value, float duration)
+        {
+            return transform.ToRectTransform()
+                .DOAnchorPosY(value, duration);
         }
     }
 }

@@ -17,6 +17,9 @@ namespace GameOff2024.Game
             Suit.Heart,
             Suit.Spade,
         };
+
+        public const float DEAL_SPEED = 0.5f;
+        public const float HAND_INTERVAL = 240.0f;
     }
 
     public sealed class ChipConfig
