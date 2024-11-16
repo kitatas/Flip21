@@ -1,14 +1,14 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using GameOff2024.Common.Presentation.View.Button;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace GameOff2024.Game.Presentation.View.Modal
 {
     public abstract class BaseModalView : MonoBehaviour
     {
         [SerializeField] protected CanvasGroup canvasGroup = default;
-        [SerializeField] protected Button decision = default;
+        [SerializeField] protected CommonButtonView decision = default;
 
         public abstract GameModal modal { get; }
 

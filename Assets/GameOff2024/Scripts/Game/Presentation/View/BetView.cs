@@ -1,24 +1,24 @@
+using GameOff2024.Common.Presentation.View.Button;
 using R3;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace GameOff2024.Game.Presentation.View
 {
     public sealed class BetView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI num = default;
-        [SerializeField] private Button plus = default;
-        [SerializeField] private Button minus = default;
-        [SerializeField] private Button decision = default;
+        [SerializeField] private CommonButtonView plus = default;
+        [SerializeField] private CommonButtonView minus = default;
+        [SerializeField] private CommonButtonView decision = default;
 
         private readonly Subject<int> _bet = new();
         public Observable<int> bet => _bet;
 
         public void Init()
         {
-            plus.onClick.AddListener(() => _bet?.OnNext(1));
-            minus.onClick.AddListener(() => _bet?.OnNext(-1));
+            plus.AddAction(() => _bet?.OnNext(1));
+            minus.AddAction(() => _bet?.OnNext(-1));
         }
 
         public void Render(int value)
@@ -28,13 +28,13 @@ namespace GameOff2024.Game.Presentation.View
 
         public void ActivatePlus(bool value)
         {
-            plus.interactable = value;
+            plus.SetInteractable(value);
         }
 
         public void ActivateMinus(bool value)
         {
-            minus.interactable = value;
-            decision.interactable = value;
+            minus.SetInteractable(value);
+            decision.SetInteractable(value);
         }
     }
 }
