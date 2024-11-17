@@ -18,6 +18,14 @@ namespace GameOff2024.Game.Presentation.View
             enemy.Init();
         }
 
+        public async UniTask SetUpAsync(CancellationToken token)
+        {
+            await (
+                player.HideAsync(CardConfig.DEAL_SPEED, token),
+                enemy.HideAsync(CardConfig.DEAL_SPEED, token)
+            );
+        }
+
         public async UniTask RenderPlayerHandsAsync(List<HandVO> playerHands, CancellationToken token)
         {
             foreach (var playerHand in playerHands)

@@ -15,5 +15,7 @@ namespace GameOff2024.Game.Data.Entity
         {
             hands.Add(value);
         }
+
+        public void Clear() => hands.Clear();
     }
 }

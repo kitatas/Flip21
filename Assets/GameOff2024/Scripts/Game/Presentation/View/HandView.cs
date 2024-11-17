@@ -54,5 +54,21 @@ namespace GameOff2024.Game.Presentation.View
 
             await UniTaskHelper.DelayAsync(duration * 2.0f, token);
         }
+
+        public async UniTask HideAsync(float duration, CancellationToken token)
+        {
+            if (_handCards.Count <= 0) return;
+
+            for (int i = 0; i < _handCards.Count; i++)
+            {
+                _handCards[i].TweenX(-1300.0f, duration)
+                    .SetDelay(0.05f * i);
+            }
+
+            await UniTaskHelper.DelayAsync(duration + 0.5f, token);
+
+            _handCards.Clear();
+            gameObject.DestroyChildren();
+        }
     }
 }

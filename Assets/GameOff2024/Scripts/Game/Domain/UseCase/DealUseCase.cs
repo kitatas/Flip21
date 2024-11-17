@@ -27,6 +27,8 @@ namespace GameOff2024.Game.Domain.UseCase
         public void SetUp()
         {
             _deckEntity.Refresh();
+            _playerHandEntity.Clear();
+            _enemyHandEntity.Clear();
 
             // 初期カード配布
             for (int i = 0; i < GameConfig.INIT_CARD_NUM; i++)
