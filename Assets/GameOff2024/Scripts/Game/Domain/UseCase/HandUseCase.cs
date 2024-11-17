@@ -35,10 +35,9 @@ namespace GameOff2024.Game.Domain.UseCase
         public HandVO GetPlayerHandLast() => GetPlayerHands().Last();
         public HandVO GetEnemyHandLast() => GetEnemyHands().Last();
 
-        public UserAction GetEnemyAction()
-        {
-            var score = GetEnemyHands().GetHandScore();
-            return score >= 17 ? UserAction.Stand : UserAction.Hit;
-        }
+        public bool IsPlayerScoreOver(int value) => GetPlayerHands().GetHandScore() >= value;
+        public bool IsEnemyScoreOver(int value) => GetEnemyHands().GetHandScore() >= value;
+
+        public UserAction GetEnemyAction() => IsEnemyScoreOver(17) ? UserAction.Stand : UserAction.Hit;
     }
 }

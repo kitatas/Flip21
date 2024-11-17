@@ -20,7 +20,7 @@ namespace GameOff2024.Game.Utility
             score += aceCount * 11;
 
             // A を 11 で扱わない場合
-            while (aceCount > 0 && score > 21)
+            while (aceCount > 0 && score > HandConfig.BUST_THRESHOLD)
             {
                 aceCount--;
                 score -= 10;

@@ -22,6 +22,11 @@ namespace GameOff2024.Game
         public const float HAND_INTERVAL = 240.0f;
     }
 
+    public sealed class HandConfig
+    {
+        public const int BUST_THRESHOLD = 21;
+    }
+
     public sealed class ChipConfig
     {
         public const int INIT_VALUE = 10;

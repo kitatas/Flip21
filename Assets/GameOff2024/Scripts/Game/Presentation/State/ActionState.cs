@@ -39,15 +39,21 @@ namespace GameOff2024.Game.Presentation.State
                 await DecisionPlayerActionAsync(token);
             }
 
-            // TODO: playerのバストチェック
-            // TODO: enemyのバストチェック
+            // check bust
+            var isPlayerBust = _handUseCase.IsPlayerScoreOver(HandConfig.BUST_THRESHOLD + 1);
+            var isEnemyBust = _handUseCase.IsEnemyScoreOver(HandConfig.BUST_THRESHOLD + 1);
+            if (isPlayerBust && isEnemyBust) return GameState.None;
+            if (isPlayerBust) return GameState.None;
+            if (isEnemyBust) return GameState.None;
 
             if (_actionUseCase.IsEnemyStand() == false)
             {
                 await DecisionEnemyActionAsync(token);
             }
 
-            // TODO: enemyのバストチェック
+            // check bust
+            isEnemyBust = _handUseCase.IsEnemyScoreOver(HandConfig.BUST_THRESHOLD + 1);
+            if (isEnemyBust) return GameState.None;
 
             return _actionUseCase.IsAllStand() ? GameState.None : GameState.Action;
         }
