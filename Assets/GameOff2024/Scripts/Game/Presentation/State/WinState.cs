@@ -37,7 +37,7 @@ namespace GameOff2024.Game.Presentation.State
                 throw new Exception();
             }
 
-            return _chipUseCase.current < GameConfig.CLEAR_THRESHOLD ? GameState.Deal : GameState.None;
+            return _chipUseCase.current < GameConfig.CLEAR_THRESHOLD ? GameState.Bet : GameState.None;
         }
     }
 }
