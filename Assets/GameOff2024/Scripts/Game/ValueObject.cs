@@ -13,6 +13,18 @@ namespace GameOff2024.Game
             this.suit = suit;
             this.rank = rank;
         }
+
+        public string GetRankString()
+        {
+            return rank switch
+            {
+                1 => "A",
+                11 => "J",
+                12 => "Q",
+                13 => "K",
+                _ => rank.ToString()
+            };
+        }
     }
 
     [Serializable]

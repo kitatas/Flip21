@@ -14,7 +14,7 @@ namespace GameOff2024.Game.Presentation.View
 
         public void Render(CardVO cardVO)
         {
-            rank.text = cardVO.rank.ToString();
+            rank.text = cardVO.GetRankString();
             rank.color = cardVO.suit.color;
             suit1.sprite = cardVO.suit.icon;
             suit1.color = cardVO.suit.color;
