@@ -7,12 +7,15 @@ namespace GameOff2024.Game.Presentation.State
 {
     public sealed class DealState : BaseState
     {
+        private readonly ActionUseCase _actionUseCase;
         private readonly DealUseCase _dealUseCase;
         private readonly HandUseCase _handUseCase;
         private readonly TableView _tableView;
 
-        public DealState(DealUseCase dealUseCase, HandUseCase handUseCase, TableView tableView)
+        public DealState(ActionUseCase actionUseCase, DealUseCase dealUseCase, HandUseCase handUseCase,
+            TableView tableView)
         {
+            _actionUseCase = actionUseCase;
             _dealUseCase = dealUseCase;
             _handUseCase = handUseCase;
             _tableView = tableView;
@@ -29,6 +32,7 @@ namespace GameOff2024.Game.Presentation.State
 
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
+            _actionUseCase.SetUp();
             _dealUseCase.SetUp();
 
             await (

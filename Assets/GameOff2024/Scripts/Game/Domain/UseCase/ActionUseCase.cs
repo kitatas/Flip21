@@ -16,6 +16,12 @@ namespace GameOff2024.Game.Domain.UseCase
         public void SetPlayerStand(bool value) => _player.SetStand(value);
         public void SetEnemyStand(bool value) => _enemy.SetStand(value);
 
+        public void SetUp()
+        {
+            SetPlayerStand(false);
+            SetEnemyStand(false);
+        }
+
         public bool IsPlayerStand() => _player.isStand;
         public bool IsEnemyStand() => _enemy.isStand;
         public bool IsAllStand() => IsPlayerStand() && IsEnemyStand();
