@@ -39,5 +39,16 @@ namespace GameOff2024.Game.Domain.UseCase
         public bool IsEnemyScoreOver(int value) => GetEnemyHands().GetHandScore() >= value;
 
         public UserAction GetEnemyAction() => IsEnemyScoreOver(17) ? UserAction.Stand : UserAction.Hit;
+
+        public BattleResult GetResult()
+        {
+            var type = GetPlayerHands().GetHandScore() - GetEnemyHands().GetHandScore();
+            return type switch
+            {
+                > 0 => BattleResult.Win,
+                < 0 => BattleResult.Lose,
+                0 => BattleResult.Draw,
+            };
+        }
     }
 }

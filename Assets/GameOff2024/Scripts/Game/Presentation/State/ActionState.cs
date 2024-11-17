@@ -55,7 +55,19 @@ namespace GameOff2024.Game.Presentation.State
             isEnemyBust = _handUseCase.IsEnemyScoreOver(HandConfig.BUST_THRESHOLD + 1);
             if (isEnemyBust) return GameState.Win;
 
-            return _actionUseCase.IsAllStand() ? GameState.None : GameState.Action;
+            if (_actionUseCase.IsAllStand())
+            {
+                var result = _handUseCase.GetResult();
+                return result switch
+                {
+                    BattleResult.Win => GameState.Win,
+                    BattleResult.Lose => GameState.Lose,
+                    BattleResult.Draw => GameState.None,
+                    _ => throw new Exception()
+                };
+            }
+
+            return GameState.Action;
         }
 
         private async UniTask DecisionPlayerActionAsync(CancellationToken token)

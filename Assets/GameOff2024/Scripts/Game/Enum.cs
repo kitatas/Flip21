@@ -33,4 +33,12 @@ namespace GameOff2024.Game
         Hit = 1,
         Stand = 2,
     }
+
+    public enum BattleResult
+    {
+        None = 0,
+        Win = 1,
+        Lose = 2,
+        Draw = 3,
+    }
 }
