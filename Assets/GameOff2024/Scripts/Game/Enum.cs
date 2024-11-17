@@ -21,6 +21,7 @@ namespace GameOff2024.Game
     {
         None = 0,
         Bet = 1,
+        Lose = 2,
     }
 
     public enum UserAction
