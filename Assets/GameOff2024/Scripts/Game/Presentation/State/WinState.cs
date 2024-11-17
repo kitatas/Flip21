@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using GameOff2024.Game.Domain.UseCase;
+using GameOff2024.Game.Presentation.View;
 
 namespace GameOff2024.Game.Presentation.State
 {
@@ -9,11 +10,13 @@ namespace GameOff2024.Game.Presentation.State
     {
         private readonly ChipUseCase _chipUseCase;
         private readonly ModalUseCase _modalUseCase;
+        private readonly TableView _tableView;
 
-        public WinState(ChipUseCase chipUseCase, ModalUseCase modalUseCase)
+        public WinState(ChipUseCase chipUseCase, ModalUseCase modalUseCase, TableView tableView)
         {
             _chipUseCase = chipUseCase;
             _modalUseCase = modalUseCase;
+            _tableView = tableView;
         }
 
         public override GameState state => GameState.Win;
@@ -25,6 +28,8 @@ namespace GameOff2024.Game.Presentation.State
 
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
+            await _tableView.OpenEnemyHandsAsync(token);
+
             var isComplete = await _modalUseCase.SetUpAsync(GameModal.Win, token);
             if (isComplete == false)
             {

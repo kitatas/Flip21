@@ -49,5 +49,11 @@ namespace GameOff2024.Game.Presentation.View
             card.Render(hand.card);
             await enemy.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
         }
+
+        public async UniTask OpenEnemyHandsAsync(CancellationToken token)
+        {
+            await enemy.RotateAsync(CardConfig.ROTATE_SPEED, token);
+            await UniTaskHelper.DelayAsync(1.0f, token);
+        }
     }
 }

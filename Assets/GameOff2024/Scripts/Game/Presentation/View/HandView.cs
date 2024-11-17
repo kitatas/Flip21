@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using GameOff2024.Common.Utility;
 using UniEx;
 using UnityEngine;
@@ -41,6 +42,17 @@ namespace GameOff2024.Game.Presentation.View
             }
 
             await UniTaskHelper.DelayAsync(duration, token);
+        }
+
+        public async UniTask RotateAsync(float duration, CancellationToken token)
+        {
+            for (int i = 0; i < _handCards.Count; i++)
+            {
+                _handCards[i].Open(duration)
+                    .SetDelay(0.25f * i);
+            }
+
+            await UniTaskHelper.DelayAsync(duration * 2.0f, token);
         }
     }
 }
