@@ -44,7 +44,7 @@ namespace GameOff2024.Game.Presentation.State
             var isEnemyBust = _handUseCase.IsEnemyScoreOver(HandConfig.BUST_THRESHOLD + 1);
             if (isPlayerBust && isEnemyBust) return GameState.None;
             if (isPlayerBust) return GameState.Lose;
-            if (isEnemyBust) return GameState.None;
+            if (isEnemyBust) return GameState.Win;
 
             if (_actionUseCase.IsEnemyStand() == false)
             {
@@ -53,7 +53,7 @@ namespace GameOff2024.Game.Presentation.State
 
             // check bust
             isEnemyBust = _handUseCase.IsEnemyScoreOver(HandConfig.BUST_THRESHOLD + 1);
-            if (isEnemyBust) return GameState.None;
+            if (isEnemyBust) return GameState.Win;
 
             return _actionUseCase.IsAllStand() ? GameState.None : GameState.Action;
         }

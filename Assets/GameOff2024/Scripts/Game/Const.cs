@@ -4,6 +4,8 @@ namespace GameOff2024.Game
     {
         public const GameState INIT_STATE = GameState.Bet;
         public const int INIT_CARD_NUM = 2;
+
+        public const int CLEAR_THRESHOLD = 100;
     }
 
     public sealed class CardConfig
