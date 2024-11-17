@@ -25,6 +25,7 @@ namespace GameOff2024.Game
         Bet = 1,
         Lose = 2,
         Win = 3,
+        Draw = 4,
     }
 
     public enum UserAction
