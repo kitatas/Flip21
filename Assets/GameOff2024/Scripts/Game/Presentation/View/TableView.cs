@@ -21,9 +21,7 @@ namespace GameOff2024.Game.Presentation.View
         {
             foreach (var playerHand in playerHands)
             {
-                var card = Instantiate(cardView, transform);
-                card.Render(playerHand.card);
-                await player.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
+                await CreatePlayerHandAsync(playerHand, token);
             }
         }
 
@@ -31,10 +29,22 @@ namespace GameOff2024.Game.Presentation.View
         {
             foreach (var enemyHand in enemyHands)
             {
-                var card = Instantiate(cardView, transform);
-                card.Render(enemyHand.card);
-                await enemy.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
+                await CreateEnemyHandAsync(enemyHand, token);
             }
+        }
+
+        public async UniTask CreatePlayerHandAsync(HandVO hand, CancellationToken token)
+        {
+            var card = Instantiate(cardView, transform);
+            card.Render(hand.card);
+            await player.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
+        }
+
+        public async UniTask CreateEnemyHandAsync(HandVO hand, CancellationToken token)
+        {
+            var card = Instantiate(cardView, transform);
+            card.Render(hand.card);
+            await enemy.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
         }
     }
 }

@@ -30,5 +30,7 @@ namespace GameOff2024.Game.Domain.UseCase
                 .Select((v, i) => new HandVO(i, _deckEntity.GetCard(v)))
                 .ToList();
         }
+
+        public HandVO GetPlayerHandLast() => GetPlayerHands().Last();
     }
 }

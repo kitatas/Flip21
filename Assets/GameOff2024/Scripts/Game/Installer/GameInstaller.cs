@@ -31,6 +31,7 @@ namespace GameOff2024.Game.Installer
             builder.Register<SuitRepository>(Lifetime.Scoped);
 
             // UseCase
+            builder.Register<ActionUseCase>(Lifetime.Scoped);
             builder.Register<BetUseCase>(Lifetime.Scoped);
             builder.Register<ChipUseCase>(Lifetime.Scoped);
             builder.Register<DealUseCase>(Lifetime.Scoped);
@@ -48,10 +49,12 @@ namespace GameOff2024.Game.Installer
             });
 
             // State
+            builder.Register<BaseState, ActionState>(Lifetime.Scoped);
             builder.Register<BaseState, BetState>(Lifetime.Scoped);
             builder.Register<BaseState, DealState>(Lifetime.Scoped);
 
             // View
+            builder.RegisterComponentInHierarchy<ActionView>();
             builder.RegisterComponentInHierarchy<BetView>();
             builder.RegisterComponentInHierarchy<ChipView>();
             builder.RegisterComponentInHierarchy<TableView>();

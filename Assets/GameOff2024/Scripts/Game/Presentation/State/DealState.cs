@@ -36,7 +36,7 @@ namespace GameOff2024.Game.Presentation.State
                 _tableView.RenderEnemyHandsAsync(_handUseCase.GetEnemyHands(), token)
             );
 
-            return GameState.None;
+            return GameState.Action;
         }
     }
 }
