@@ -42,7 +42,14 @@ namespace GameOff2024.Game.Presentation.State
             // TODO: playerのバストチェック
             // TODO: enemyのバストチェック
 
-            return GameState.None;
+            if (_actionUseCase.IsEnemyStand() == false)
+            {
+                await DecisionEnemyActionAsync(token);
+            }
+
+            // TODO: enemyのバストチェック
+
+            return _actionUseCase.IsAllStand() ? GameState.None : GameState.Action;
         }
 
         private async UniTask DecisionPlayerActionAsync(CancellationToken token)
@@ -56,6 +63,24 @@ namespace GameOff2024.Game.Presentation.State
                     break;
                 case UserAction.Stand:
                     _actionUseCase.SetPlayerStand(true);
+                    break;
+                default:
+                    // TODO: Exception
+                    throw new Exception();
+            }
+        }
+
+        private async UniTask DecisionEnemyActionAsync(CancellationToken token)
+        {
+            var userAction = _handUseCase.GetEnemyAction();
+            switch (userAction)
+            {
+                case UserAction.Hit:
+                    _dealUseCase.DealToEnemy();
+                    await _tableView.CreateEnemyHandAsync(_handUseCase.GetEnemyHandLast(), token);
+                    break;
+                case UserAction.Stand:
+                    _actionUseCase.SetEnemyStand(true);
                     break;
                 default:
                     // TODO: Exception

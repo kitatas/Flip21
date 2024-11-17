@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GameOff2024.Game.Data.Entity;
+using GameOff2024.Game.Utility;
 
 namespace GameOff2024.Game.Domain.UseCase
 {
@@ -32,5 +33,12 @@ namespace GameOff2024.Game.Domain.UseCase
         }
 
         public HandVO GetPlayerHandLast() => GetPlayerHands().Last();
+        public HandVO GetEnemyHandLast() => GetEnemyHands().Last();
+
+        public UserAction GetEnemyAction()
+        {
+            var score = GetEnemyHands().GetHandScore();
+            return score >= 17 ? UserAction.Stand : UserAction.Hit;
+        }
     }
 }
