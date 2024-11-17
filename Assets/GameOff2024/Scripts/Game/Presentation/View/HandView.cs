@@ -31,8 +31,8 @@ namespace GameOff2024.Game.Presentation.View
         {
             var cardCount = _handCards.Count;
             var pointX = cardCount.IsEven()
-                ? -1.0f * (CardConfig.HAND_INTERVAL / 2.0f) * (cardCount / 2.0f)
-                : -1.0f * CardConfig.HAND_INTERVAL * Mathf.Floor(cardCount / 2.0f);
+                ? -1.0f * CardConfig.HAND_INTERVAL * (cardCount * 0.5f - 0.5f)
+                : -1.0f * CardConfig.HAND_INTERVAL * Mathf.Floor(cardCount * 0.5f);
 
             for (int i = 0; i < cardCount; i++)
             {

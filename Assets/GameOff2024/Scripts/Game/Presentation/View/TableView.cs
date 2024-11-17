@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using GameOff2024.Common.Utility;
 using UnityEngine;
 
 namespace GameOff2024.Game.Presentation.View
@@ -27,6 +28,7 @@ namespace GameOff2024.Game.Presentation.View
 
         public async UniTask RenderEnemyHandsAsync(List<HandVO> enemyHands, CancellationToken token)
         {
+            await UniTaskHelper.DelayAsync(CardConfig.DEAL_SPEED / 2.0f, token);
             foreach (var enemyHand in enemyHands)
             {
                 await CreateEnemyHandAsync(enemyHand, token);
