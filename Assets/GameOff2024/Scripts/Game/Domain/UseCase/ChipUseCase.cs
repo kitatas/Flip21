@@ -15,6 +15,7 @@ namespace GameOff2024.Game.Domain.UseCase
         }
 
         public Observable<int> chip => _chip;
+        public int current => _chip.Value;
 
         public void Add(int value)
         {

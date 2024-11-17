@@ -43,7 +43,7 @@ namespace GameOff2024.Game.Presentation.State
             var isPlayerBust = _handUseCase.IsPlayerScoreOver(HandConfig.BUST_THRESHOLD + 1);
             var isEnemyBust = _handUseCase.IsEnemyScoreOver(HandConfig.BUST_THRESHOLD + 1);
             if (isPlayerBust && isEnemyBust) return GameState.None;
-            if (isPlayerBust) return GameState.None;
+            if (isPlayerBust) return GameState.Lose;
             if (isEnemyBust) return GameState.None;
 
             if (_actionUseCase.IsEnemyStand() == false)

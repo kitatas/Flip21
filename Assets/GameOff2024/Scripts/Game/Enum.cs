@@ -6,6 +6,7 @@ namespace GameOff2024.Game
         Bet = 2,
         Deal = 3,
         Action = 4,
+        Lose = 5,
     }
 
     public enum Suit
