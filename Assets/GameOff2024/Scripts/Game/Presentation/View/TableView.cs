@@ -40,6 +40,7 @@ namespace GameOff2024.Game.Presentation.View
             var card = Instantiate(cardView, transform);
             card.Render(hand.card);
             await player.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
+            card.Open(CardConfig.ROTATE_SPEED).WithCancellation(token).Forget();
         }
 
         public async UniTask CreateEnemyHandAsync(HandVO hand, CancellationToken token)

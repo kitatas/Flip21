@@ -21,6 +21,7 @@ namespace GameOff2024.Game
         };
 
         public const float DEAL_SPEED = 0.5f;
+        public const float ROTATE_SPEED = 0.25f;
         public const float HAND_INTERVAL = 240.0f;
     }
 

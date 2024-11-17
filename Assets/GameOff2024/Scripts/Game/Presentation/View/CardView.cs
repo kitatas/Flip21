@@ -11,6 +11,7 @@ namespace GameOff2024.Game.Presentation.View
         [SerializeField] private TextMeshProUGUI rank = default;
         [SerializeField] private Image suit1 = default;
         [SerializeField] private Image suit2 = default;
+        [SerializeField] private Image background = default;
 
         public void Render(CardVO cardVO)
         {
@@ -22,6 +23,8 @@ namespace GameOff2024.Game.Presentation.View
             suit2.color = cardVO.suit.color;
         }
 
+        public void ActivateBackground(bool value) => background.gameObject.SetActive(value);
+
         public Tween TweenX(float value, float duration)
         {
             return transform.ToRectTransform()
@@ -32,6 +35,21 @@ namespace GameOff2024.Game.Presentation.View
         {
             return transform.ToRectTransform()
                 .DOAnchorPosY(value, duration);
+        }
+
+        public Tween Open(float duration)
+        {
+            return DOTween.Sequence()
+                .Append(RotateY(90.0f, duration))
+                .AppendCallback(() => ActivateBackground(false))
+                .Append(RotateY(270.0f, 0.0f))
+                .Append(RotateY(360.0f, duration));
+        }
+
+        public Tween RotateY(float value, float duration)
+        {
+            return transform.ToRectTransform()
+                .DORotate(new Vector3(0.0f, value, 0.0f), duration, RotateMode.FastBeyond360);
         }
     }
 }
