@@ -38,6 +38,8 @@ namespace GameOff2024.Game.Presentation.Presenter
             _stateUseCase.state
                 .Subscribe(x => ExecAsync(x, token).Forget())
                 .AddTo(token);
+
+            _stateUseCase.Set(GameConfig.INIT_STATE);
         }
 
         private async UniTaskVoid ExecAsync(GameState state, CancellationToken token)
