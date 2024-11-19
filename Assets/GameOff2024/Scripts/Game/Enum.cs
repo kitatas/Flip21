@@ -29,6 +29,15 @@ namespace GameOff2024.Game
         Draw = 4,
     }
 
+    public enum Skill
+    {
+        None = 0,
+        ChipGetUp = 1,
+        ChipLostDown = 2,
+        ChipGetLostUp = 3,
+        ChipGetLostDown = 4,
+    }
+
     public enum UserAction
     {
         None = 0,

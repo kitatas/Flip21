@@ -51,4 +51,19 @@ namespace GameOff2024.Game
             this.card = card;
         }
     }
+
+    [Serializable]
+    public sealed class SkillVO
+    {
+        public readonly Skill skill;
+        public readonly Sprite icon;
+        public readonly int value;
+
+        public SkillVO(Skill skill, Sprite icon, int value)
+        {
+            this.skill = skill;
+            this.icon = icon;
+            this.value = value;
+        }
+    }
 }
