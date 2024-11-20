@@ -14,11 +14,13 @@ namespace GameOff2024.Game.Installer
 {
     public sealed class GameInstaller : LifetimeScope
     {
+        [SerializeField] private SkillTable skillTable = default;
         [SerializeField] private SuitTable suitTable = default;
 
         protected override void Configure(IContainerBuilder builder)
         {
             // DataStore
+            builder.RegisterInstance<SkillTable>(skillTable);
             builder.RegisterInstance<SuitTable>(suitTable);
 
             // Entity
@@ -28,6 +30,7 @@ namespace GameOff2024.Game.Installer
             builder.Register<PlayerHandEntity>(Lifetime.Scoped);
 
             // Repository
+            builder.Register<SkillRepository>(Lifetime.Scoped);
             builder.Register<SuitRepository>(Lifetime.Scoped);
 
             // UseCase
@@ -37,6 +40,7 @@ namespace GameOff2024.Game.Installer
             builder.Register<DealUseCase>(Lifetime.Scoped);
             builder.Register<HandUseCase>(Lifetime.Scoped);
             builder.Register<ModalUseCase>(Lifetime.Scoped);
+            builder.Register<SkillUseCase>(Lifetime.Scoped);
             builder.Register<StateUseCase>(Lifetime.Scoped);
 
             // Presenter
@@ -45,6 +49,7 @@ namespace GameOff2024.Game.Installer
                 entryPoints.Add<BetPresenter>();
                 entryPoints.Add<ChipPresenter>();
                 entryPoints.Add<ModalPresenter>();
+                entryPoints.Add<SkillPresenter>();
                 entryPoints.Add<StatePresenter>();
             });
 
@@ -60,6 +65,7 @@ namespace GameOff2024.Game.Installer
             builder.RegisterComponentInHierarchy<ActionView>();
             builder.RegisterComponentInHierarchy<BetView>();
             builder.RegisterComponentInHierarchy<ChipView>();
+            builder.RegisterComponentInHierarchy<PickListView>();
             builder.RegisterComponentInHierarchy<TableView>();
 
             // Modal
