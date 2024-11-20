@@ -14,10 +14,10 @@ namespace GameOff2024.Game.Presentation.Presenter
     public sealed class ModalPresenter : IStartable, IDisposable
     {
         private readonly ModalUseCase _modalUseCase;
-        private readonly List<BaseModalView> _modalViews;
+        private readonly List<GameModalView> _modalViews;
         private readonly CancellationTokenSource _tokenSource;
 
-        public ModalPresenter(ModalUseCase modalUseCase, IEnumerable<BaseModalView> modalViews)
+        public ModalPresenter(ModalUseCase modalUseCase, IEnumerable<GameModalView> modalViews)
         {
             _modalUseCase = modalUseCase;
             _modalViews = modalViews.ToList();
