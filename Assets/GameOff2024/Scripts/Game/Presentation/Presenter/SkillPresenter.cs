@@ -37,6 +37,7 @@ namespace GameOff2024.Game.Presentation.Presenter
                 onClick
                     .SubscribeAwait(async (x, token) =>
                     {
+                        _skillUseCase.Select(x);
                         await _pickModalView.HideAsync(ModalConfig.DURATION, token);
                     })
                     .AddTo(_pickModalView);
