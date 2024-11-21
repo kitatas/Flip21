@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using GameOff2024.Game.Data.Entity;
 using GameOff2024.Game.Domain.Repository;
 using ObservableCollections;
 using R3;
@@ -9,12 +10,14 @@ namespace GameOff2024.Game.Domain.UseCase
 {
     public sealed class SkillUseCase
     {
+        private readonly SkillEntity _skillEntity;
         private readonly SkillRepository _skillRepository;
         private readonly ObservableFixedSizeRingBuffer<SkillVO> _pickList;
         private readonly Subject<bool> _complete;
 
-        public SkillUseCase(SkillRepository skillRepository)
+        public SkillUseCase(SkillEntity skillEntity, SkillRepository skillRepository)
         {
+            _skillEntity = skillEntity;
             _skillRepository = skillRepository;
             _pickList = new ObservableFixedSizeRingBuffer<SkillVO>(PickConfig.MAX_NUM);
             _complete = new Subject<bool>();
@@ -41,7 +44,7 @@ namespace GameOff2024.Game.Domain.UseCase
 
         public void Select(int index)
         {
-            // TODO: スキル保持 pickList[index]
+            _skillEntity.Add(pickList[index]);
             _complete?.OnNext(true);
         }
     }

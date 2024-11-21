@@ -30,6 +30,11 @@ namespace GameOff2024.Game
         public const int BUST_THRESHOLD = 21;
     }
 
+    public sealed class SkillConfig
+    {
+        public const int INIT_CHIP_RATE = 100;
+    }
+
     public sealed class PickConfig
     {
         public const int MAX_NUM = 3;
