@@ -1,5 +1,6 @@
 using GameOff2024.Game.Data.Entity;
 using R3;
+using UnityEngine;
 
 namespace GameOff2024.Game.Domain.UseCase
 {
@@ -16,6 +17,11 @@ namespace GameOff2024.Game.Domain.UseCase
 
         public Observable<int> chip => _chip;
         public int current => _chip.Value;
+
+        public void Add(float value)
+        {
+            Add(Mathf.CeilToInt(value));
+        }
 
         public void Add(int value)
         {

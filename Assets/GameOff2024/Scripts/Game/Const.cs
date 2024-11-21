@@ -33,6 +33,7 @@ namespace GameOff2024.Game
     public sealed class SkillConfig
     {
         public const int INIT_CHIP_RATE = 100;
+        public const float CHIP_RATE = 100.0f;
     }
 
     public sealed class PickConfig
