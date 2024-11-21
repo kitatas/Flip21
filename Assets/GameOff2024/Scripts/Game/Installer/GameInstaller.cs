@@ -67,6 +67,7 @@ namespace GameOff2024.Game.Installer
             builder.RegisterComponentInHierarchy<ActionView>();
             builder.RegisterComponentInHierarchy<BetView>();
             builder.RegisterComponentInHierarchy<ChipView>();
+            builder.RegisterComponentInHierarchy<SkillView>();
             builder.RegisterComponentInHierarchy<TableView>();
 
             // Modal

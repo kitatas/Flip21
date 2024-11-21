@@ -1,5 +1,5 @@
-using Cysharp.Threading.Tasks;
 using GameOff2024.Game.Domain.UseCase;
+using GameOff2024.Game.Presentation.View;
 using GameOff2024.Game.Presentation.View.Modal;
 using ObservableCollections;
 using R3;
@@ -11,11 +11,13 @@ namespace GameOff2024.Game.Presentation.Presenter
     {
         private readonly SkillUseCase _skillUseCase;
         private readonly PickModalView _pickModalView;
+        private readonly SkillView _skillView;
 
-        public SkillPresenter(SkillUseCase skillUseCase, PickModalView pickModalView)
+        public SkillPresenter(SkillUseCase skillUseCase, PickModalView pickModalView, SkillView skillView)
         {
             _skillUseCase = skillUseCase;
             _pickModalView = pickModalView;
+            _skillView = skillView;
         }
 
         public void Start()
@@ -42,6 +44,10 @@ namespace GameOff2024.Game.Presentation.Presenter
                     })
                     .AddTo(_pickModalView);
             }
+
+            _skillUseCase.chipRate
+                .Subscribe(_skillView.Render)
+                .AddTo(_skillView);
         }
     }
 }

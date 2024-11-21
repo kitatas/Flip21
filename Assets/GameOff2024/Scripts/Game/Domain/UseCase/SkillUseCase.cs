@@ -14,6 +14,7 @@ namespace GameOff2024.Game.Domain.UseCase
         private readonly SkillRepository _skillRepository;
         private readonly ObservableFixedSizeRingBuffer<SkillVO> _pickList;
         private readonly Subject<bool> _complete;
+        private readonly ReactiveProperty<(int get, int lost)> _chipRate;
 
         public SkillUseCase(SkillEntity skillEntity, SkillRepository skillRepository)
         {
@@ -21,9 +22,11 @@ namespace GameOff2024.Game.Domain.UseCase
             _skillRepository = skillRepository;
             _pickList = new ObservableFixedSizeRingBuffer<SkillVO>(PickConfig.MAX_NUM);
             _complete = new Subject<bool>();
+            _chipRate = new ReactiveProperty<(int get, int lost)>(_skillEntity.GetChipRate());
         }
 
         public ObservableFixedSizeRingBuffer<SkillVO> pickList => _pickList;
+        public Observable<(int get, int lost)> chipRate => _chipRate;
 
         public async UniTask<bool> LotAsync(CancellationToken token)
         {
@@ -45,6 +48,7 @@ namespace GameOff2024.Game.Domain.UseCase
         public void Select(int index)
         {
             _skillEntity.Add(pickList[index]);
+            _chipRate.Value = _skillEntity.GetChipRate();
             _complete?.OnNext(true);
         }
     }
