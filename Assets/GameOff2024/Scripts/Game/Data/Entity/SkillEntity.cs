@@ -22,7 +22,7 @@ namespace GameOff2024.Game.Data.Entity
                     chipGetRate += skill.value;
                     break;
                 case Skill.ChipLostDown:
-                    chipLostRate = Mathf.Min(chipLostRate - skill.value, 0);
+                    chipLostRate = Mathf.Max(chipLostRate - skill.value, 0);
                     break;
                 case Skill.ChipGetLostUp:
                     chipGetRate += skill.value;
@@ -30,7 +30,7 @@ namespace GameOff2024.Game.Data.Entity
                     break;
                 case Skill.ChipGetLostDown:
                     chipGetRate = Mathf.Max(chipGetRate - skill.value, 0);
-                    chipLostRate = Mathf.Min(chipLostRate - skill.value, 0);
+                    chipLostRate = Mathf.Max(chipLostRate - skill.value, 0);
                     break;
                 default:
                     throw new Exception();
