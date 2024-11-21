@@ -28,6 +28,7 @@ namespace GameOff2024.Game.Domain.UseCase
         public ObservableFixedSizeRingBuffer<SkillVO> pickList => _pickList;
         public Observable<(int get, int lost)> chipRate => _chipRate;
         public float getChipRate => _skillEntity.GetChipRate().get / SkillConfig.CHIP_RATE;
+        public float lostChipRate => _skillEntity.GetChipRate().lost / SkillConfig.CHIP_RATE;
 
         public async UniTask<bool> LotAsync(CancellationToken token)
         {

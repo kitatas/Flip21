@@ -8,14 +8,19 @@ namespace GameOff2024.Game.Presentation.State
 {
     public sealed class LoseState : BaseState
     {
+        private readonly BetUseCase _betUseCase;
         private readonly ChipUseCase _chipUseCase;
         private readonly ModalUseCase _modalUseCase;
+        private readonly SkillUseCase _skillUseCase;
         private readonly TableView _tableView;
 
-        public LoseState(ChipUseCase chipUseCase, ModalUseCase modalUseCase, TableView tableView)
+        public LoseState(BetUseCase betUseCase, ChipUseCase chipUseCase, ModalUseCase modalUseCase,
+            SkillUseCase skillUseCase, TableView tableView)
         {
+            _betUseCase = betUseCase;
             _chipUseCase = chipUseCase;
             _modalUseCase = modalUseCase;
+            _skillUseCase = skillUseCase;
             _tableView = tableView;
         }
 
@@ -29,6 +34,9 @@ namespace GameOff2024.Game.Presentation.State
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
             await _tableView.OpenEnemyHandsAsync(token);
+
+            var chip = _betUseCase.betValue * _skillUseCase.lostChipRate * -1.0f;
+            _chipUseCase.Add(chip + _betUseCase.betValue);
 
             var isComplete = await _modalUseCase.SetUpAsync(GameModal.Lose, token);
             if (isComplete == false)
