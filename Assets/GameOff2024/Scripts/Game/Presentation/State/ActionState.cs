@@ -84,6 +84,7 @@ namespace GameOff2024.Game.Presentation.State
                     break;
                 case UserAction.Upset:
                     _dealUseCase.ActivateUpset();
+                    await _tableView.OpenSecretCardAsync(token);
                     break;
                 default:
                     // TODO: Exception
