@@ -36,6 +36,8 @@ namespace GameOff2024.Game.Presentation.State
             _dealUseCase.SetUp();
             await _tableView.SetUpAsync(token);
 
+            await _tableView.RenderSecretCardAsync(_dealUseCase.GetSecretCard(), token);
+
             await (
                 _tableView.RenderPlayerHandsAsync(_handUseCase.GetPlayerHands(), token),
                 _tableView.RenderEnemyHandsAsync(_handUseCase.GetEnemyHands(), token)

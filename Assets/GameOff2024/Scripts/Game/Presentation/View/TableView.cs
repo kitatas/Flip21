@@ -26,6 +26,13 @@ namespace GameOff2024.Game.Presentation.View
             );
         }
 
+        public async UniTask RenderSecretCardAsync(CardVO cardVO, CancellationToken token)
+        {
+            var card = Instantiate(cardView, transform);
+            card.Render(cardVO);
+            await UniTask.Yield(token);
+        }
+
         public async UniTask RenderPlayerHandsAsync(List<HandVO> playerHands, CancellationToken token)
         {
             foreach (var playerHand in playerHands)

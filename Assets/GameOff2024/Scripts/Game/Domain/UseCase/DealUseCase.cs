@@ -50,5 +50,7 @@ namespace GameOff2024.Game.Domain.UseCase
         {
             _enemyHandEntity.Add(_deckEntity.Draw());
         }
+
+        public CardVO GetSecretCard() => _deckEntity.GetCard(_upsetEntity.index);
     }
 }
