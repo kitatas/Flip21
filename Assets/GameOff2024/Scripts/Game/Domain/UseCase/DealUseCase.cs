@@ -8,14 +8,16 @@ namespace GameOff2024.Game.Domain.UseCase
         private readonly DeckEntity _deckEntity;
         private readonly PlayerHandEntity _playerHandEntity;
         private readonly EnemyHandEntity _enemyHandEntity;
+        private readonly UpsetEntity _upsetEntity;
         private readonly SuitRepository _suitRepository;
 
         public DealUseCase(DeckEntity deckEntity, PlayerHandEntity playerHandEntity, EnemyHandEntity enemyHandEntity,
-            SuitRepository suitRepository)
+            UpsetEntity upsetEntity, SuitRepository suitRepository)
         {
             _deckEntity = deckEntity;
             _playerHandEntity = playerHandEntity;
             _enemyHandEntity = enemyHandEntity;
+            _upsetEntity = upsetEntity;
             _suitRepository = suitRepository;
         }
 
@@ -29,6 +31,7 @@ namespace GameOff2024.Game.Domain.UseCase
             _deckEntity.Refresh();
             _playerHandEntity.Clear();
             _enemyHandEntity.Clear();
+            _upsetEntity.SetUp(_deckEntity.Draw());
 
             // 初期カード配布
             for (int i = 0; i < GameConfig.INIT_CARD_NUM; i++)
