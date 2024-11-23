@@ -52,5 +52,10 @@ namespace GameOff2024.Game.Domain.UseCase
         }
 
         public CardVO GetSecretCard() => _deckEntity.GetCard(_upsetEntity.index);
+
+        public void ActivateUpset()
+        {
+            _upsetEntity.SetUpset(true);
+        }
     }
 }

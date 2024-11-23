@@ -10,12 +10,15 @@ namespace GameOff2024.Game.Domain.UseCase
         private readonly DeckEntity _deckEntity;
         private readonly PlayerHandEntity _playerHandEntity;
         private readonly EnemyHandEntity _enemyHandEntity;
+        private readonly UpsetEntity _upsetEntity;
 
-        public HandUseCase(DeckEntity deckEntity, PlayerHandEntity playerHandEntity, EnemyHandEntity enemyHandEntity)
+        public HandUseCase(DeckEntity deckEntity, PlayerHandEntity playerHandEntity, EnemyHandEntity enemyHandEntity,
+            UpsetEntity upsetEntity)
         {
             _deckEntity = deckEntity;
             _playerHandEntity = playerHandEntity;
             _enemyHandEntity = enemyHandEntity;
+            _upsetEntity = upsetEntity;
         }
 
         public List<HandVO> GetPlayerHands()
@@ -35,14 +38,22 @@ namespace GameOff2024.Game.Domain.UseCase
         public HandVO GetPlayerHandLast() => GetPlayerHands().Last();
         public HandVO GetEnemyHandLast() => GetEnemyHands().Last();
 
-        public bool IsPlayerScoreOver(int value) => GetPlayerHands().GetHandScore() >= value;
-        public bool IsEnemyScoreOver(int value) => GetEnemyHands().GetHandScore() >= value;
+        public int GetPlayerHandsScore() => _upsetEntity.isUpset
+            ? GetPlayerHands().GetHandScore() + _deckEntity.GetCard(_upsetEntity.index).rank
+            : GetPlayerHands().GetHandScore();
+
+        public int GetEnemyHandsScore() => _upsetEntity.isUpset
+            ? GetEnemyHands().GetHandScore() + _deckEntity.GetCard(_upsetEntity.index).rank
+            : GetEnemyHands().GetHandScore();
+
+        public bool IsPlayerScoreOver(int value) => GetPlayerHandsScore() >= value;
+        public bool IsEnemyScoreOver(int value) => GetEnemyHandsScore() >= value;
 
         public UserAction GetEnemyAction() => IsEnemyScoreOver(17) ? UserAction.Stand : UserAction.Hit;
 
         public BattleResult GetResult()
         {
-            var type = GetPlayerHands().GetHandScore() - GetEnemyHands().GetHandScore();
+            var type = GetPlayerHandsScore() - GetEnemyHandsScore();
             return type switch
             {
                 > 0 => BattleResult.Win,

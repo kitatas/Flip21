@@ -82,6 +82,9 @@ namespace GameOff2024.Game.Presentation.State
                 case UserAction.Stand:
                     _actionUseCase.SetPlayerStand(true);
                     break;
+                case UserAction.Upset:
+                    _dealUseCase.ActivateUpset();
+                    break;
                 default:
                     // TODO: Exception
                     throw new Exception();
