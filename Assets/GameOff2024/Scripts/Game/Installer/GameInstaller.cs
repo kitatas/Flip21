@@ -29,6 +29,7 @@ namespace GameOff2024.Game.Installer
             builder.Register<DeckEntity>(Lifetime.Scoped);
             builder.Register<PlayerHandEntity>(Lifetime.Scoped);
             builder.Register<SkillEntity>(Lifetime.Scoped);
+            builder.Register<UpsetEntity>(Lifetime.Scoped);
 
             // Repository
             builder.Register<SkillRepository>(Lifetime.Scoped);
