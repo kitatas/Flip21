@@ -17,5 +17,13 @@ namespace GameOff2024.Common.Data.DataStore
                 },
             };
         }
+
+        public static UpdateUserTitleDisplayNameRequest UpdateUserTitleDisplayNameRequest(UserNameVO userNameVO)
+        {
+            return new UpdateUserTitleDisplayNameRequest
+            {
+                DisplayName = userNameVO.value,
+            };
+        }
     }
 }

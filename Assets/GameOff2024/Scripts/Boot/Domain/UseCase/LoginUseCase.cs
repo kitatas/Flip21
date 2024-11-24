@@ -64,5 +64,21 @@ namespace GameOff2024.Boot.Domain.UseCase
                 await UniTask.Yield(token);
             }
         }
+
+        public async UniTask<bool> RegisterAsync(string name, CancellationToken token)
+        {
+            var userName = new UserNameVO(name);
+            var isSuccess = await _playFabRepository.UpdateUserNameAsync(userName, token);
+            if (isSuccess)
+            {
+                // 再ログインでユーザーデータをキャッシュする
+                await LoginAsync(token);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -48,5 +48,19 @@ namespace GameOff2024.Common.Domain.Repository
             var userName = profile == null ? "" : profile.DisplayName;
             return new UserVO(userId, userName);
         }
+
+        public async UniTask<bool> UpdateUserNameAsync(UserNameVO userNameVO, CancellationToken token)
+        {
+            // TODO: Exception
+            await PlayFabHelper.CallApiAsync<UpdateUserTitleDisplayNameRequest, UpdateUserTitleDisplayNameResult>(
+                PlayFabRequestData.UpdateUserTitleDisplayNameRequest(userNameVO),
+                PlayFabClientAPI.UpdateUserTitleDisplayName,
+                e => new Exception(),
+                new Exception(),
+                token
+            );
+
+            return true;
+        }
     }
 }
