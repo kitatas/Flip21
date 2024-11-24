@@ -1,5 +1,6 @@
 using GameOff2024.Boot.Domain.UseCase;
 using GameOff2024.Boot.Presentation.Presenter;
+using GameOff2024.Boot.Presentation.State;
 using VContainer;
 using VContainer.Unity;
 
@@ -17,6 +18,9 @@ namespace GameOff2024.Boot.Installer
             {
                 entryPoints.Add<StatePresenter>();
             });
+
+            // State
+            builder.Register<BaseState, LoadState>(Lifetime.Scoped);
         }
     }
 }
