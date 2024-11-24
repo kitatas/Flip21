@@ -24,5 +24,12 @@ namespace GameOff2024.Common.Domain.Repository
         {
             ES3.Save(SaveConfig.ES3_KEY, JsonUtility.ToJson(value));
         }
+
+        public void SaveUid(string uid)
+        {
+            var data = Load();
+            data.uid = uid;
+            Save(data);
+        }
     }
 }

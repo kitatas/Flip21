@@ -26,5 +26,27 @@ namespace GameOff2024.Common.Domain.Repository
                 token
             );
         }
+
+        public UserVO FetchUser(LoginResult response)
+        {
+            // TODO: Exception
+            var payload = response.InfoResultPayload;
+            if (payload == null)
+            {
+                throw new Exception();
+            }
+
+            // TODO: Exception
+            var userData = payload.UserData;
+            if (userData == null)
+            {
+                throw new Exception();
+            }
+
+            var profile = payload.PlayerProfile;
+            var userId = profile == null ? "" : profile.PlayerId;
+            var userName = profile == null ? "" : profile.DisplayName;
+            return new UserVO(userId, userName);
+        }
     }
 }

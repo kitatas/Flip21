@@ -11,6 +11,7 @@ namespace GameOff2024.Boot.Installer
         protected override void Configure(IContainerBuilder builder)
         {
             // UseCase
+            builder.Register<LoginUseCase>(Lifetime.Scoped);
             builder.Register<StateUseCase>(Lifetime.Scoped);
 
             // Presenter
