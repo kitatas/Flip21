@@ -9,6 +9,7 @@ namespace GameOff2024.Common.Installer
         protected override void Configure(IContainerBuilder builder)
         {
             // Repository
+            builder.Register<PlayFabRepository>(Lifetime.Scoped);
             builder.Register<SaveRepository>(Lifetime.Scoped);
         }
     }
