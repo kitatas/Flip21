@@ -38,13 +38,25 @@ namespace GameOff2024.Game.Domain.UseCase
         public HandVO GetPlayerHandLast() => GetPlayerHands().Last();
         public HandVO GetEnemyHandLast() => GetEnemyHands().Last();
 
-        public int GetPlayerHandsScore() => _upsetEntity.isUpset
-            ? GetPlayerHands().GetHandScore() + _deckEntity.GetCard(_upsetEntity.index).rank
-            : GetPlayerHands().GetHandScore();
+        public int GetPlayerHandsScore()
+        {
+            var hands = _playerHandEntity.hands;
+            if (_upsetEntity.isUpset) hands.Add(_upsetEntity.index);
 
-        public int GetEnemyHandsScore() => _upsetEntity.isUpset
-            ? GetEnemyHands().GetHandScore() + _deckEntity.GetCard(_upsetEntity.index).rank
-            : GetEnemyHands().GetHandScore();
+            return hands
+                .Select((v, i) => new HandVO(i, _deckEntity.GetCard(v)))
+                .GetHandScore();
+        }
+
+        public int GetEnemyHandsScore()
+        {
+            var hands = _enemyHandEntity.hands;
+            if (_upsetEntity.isUpset) hands.Add(_upsetEntity.index);
+
+            return hands
+                .Select((v, i) => new HandVO(i, _deckEntity.GetCard(v)))
+                .GetHandScore();
+        }
 
         public bool IsPlayerScoreOver(int value) => GetPlayerHandsScore() >= value;
         public bool IsEnemyScoreOver(int value) => GetEnemyHandsScore() >= value;

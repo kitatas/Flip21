@@ -6,7 +6,7 @@ namespace GameOff2024.Game.Utility
 {
     public static class HandHelper
     {
-        public static int GetHandScore(this List<HandVO> hands)
+        public static int GetHandScore(this IEnumerable<HandVO> hands)
         {
             var ranks = hands.Select(x => x.card.rank).ToList();
 
