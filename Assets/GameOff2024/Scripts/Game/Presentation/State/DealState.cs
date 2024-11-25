@@ -10,14 +10,16 @@ namespace GameOff2024.Game.Presentation.State
         private readonly ActionUseCase _actionUseCase;
         private readonly DealUseCase _dealUseCase;
         private readonly HandUseCase _handUseCase;
+        private readonly TurnUseCase _turnUseCase;
         private readonly TableView _tableView;
 
         public DealState(ActionUseCase actionUseCase, DealUseCase dealUseCase, HandUseCase handUseCase,
-            TableView tableView)
+            TurnUseCase turnUseCase, TableView tableView)
         {
             _actionUseCase = actionUseCase;
             _dealUseCase = dealUseCase;
             _handUseCase = handUseCase;
+            _turnUseCase = turnUseCase;
             _tableView = tableView;
         }
 
@@ -34,6 +36,7 @@ namespace GameOff2024.Game.Presentation.State
         {
             _actionUseCase.SetUp();
             _dealUseCase.SetUp();
+            _turnUseCase.Increment();
             await _tableView.SetUpAsync(token);
 
             await _tableView.RenderSecretCardAsync(_dealUseCase.GetSecretCard(), token);
