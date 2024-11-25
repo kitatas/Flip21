@@ -1,5 +1,6 @@
 using GameOff2024.Common.Data.Entity;
 using GameOff2024.Common.Domain.Repository;
+using GameOff2024.Common.Domain.UseCase;
 using VContainer;
 using VContainer.Unity;
 
@@ -15,6 +16,9 @@ namespace GameOff2024.Common.Installer
             // Repository
             builder.Register<PlayFabRepository>(Lifetime.Scoped);
             builder.Register<SaveRepository>(Lifetime.Scoped);
+
+            // UseCase
+            builder.Register<SceneUseCase>(Lifetime.Scoped);
         }
     }
 }
