@@ -27,8 +27,7 @@ namespace GameOff2024.Boot.Domain.UseCase
             var user = _playFabRepository.FetchUser(response);
             _userEntity.Set(user);
 
-            // 名前が空であれば未登録ユーザー
-            return _userEntity.IsInvalidName();
+            return _userEntity.IsValidName();
         }
 
         private async UniTask<LoginResult> LoginOrCreateAsync(CancellationToken token)

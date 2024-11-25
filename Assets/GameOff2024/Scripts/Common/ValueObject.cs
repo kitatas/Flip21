@@ -21,13 +21,10 @@ namespace GameOff2024.Common
 
         public UserNameVO(string value)
         {
-            // TODO: Exception
-            if (IsInvalid(value)) throw new Exception();
-
             this.value = value;
         }
 
-        private static bool IsInvalid(string value)
+        public bool IsInvalid()
         {
             return
                 string.IsNullOrEmpty(value) ||

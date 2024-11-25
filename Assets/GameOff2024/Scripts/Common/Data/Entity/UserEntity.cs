@@ -6,6 +6,11 @@ namespace GameOff2024.Common.Data.Entity
 
         public void Set(UserVO value) => user = value;
 
-        public bool IsInvalidName() => user != null && !string.IsNullOrEmpty(user.name.value);
+        public bool IsValidName()
+        {
+            if (user?.name == null) return false;
+            if (user.name.IsInvalid()) return false;
+            return true;
+        }
     }
 }
