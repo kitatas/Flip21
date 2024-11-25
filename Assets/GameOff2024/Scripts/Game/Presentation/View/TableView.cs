@@ -41,7 +41,7 @@ namespace GameOff2024.Game.Presentation.View
             await UniTaskHelper.DelayAsync(1.0f, token);
         }
 
-        public async UniTask RenderPlayerHandsAsync(List<HandVO> playerHands, CancellationToken token)
+        public async UniTask RenderPlayerHandsAsync(IEnumerable<HandVO> playerHands, CancellationToken token)
         {
             foreach (var playerHand in playerHands)
             {
@@ -49,7 +49,7 @@ namespace GameOff2024.Game.Presentation.View
             }
         }
 
-        public async UniTask RenderEnemyHandsAsync(List<HandVO> enemyHands, CancellationToken token)
+        public async UniTask RenderEnemyHandsAsync(IEnumerable<HandVO> enemyHands, CancellationToken token)
         {
             await UniTaskHelper.DelayAsync(CardConfig.DEAL_SPEED / 2.0f, token);
             foreach (var enemyHand in enemyHands)
