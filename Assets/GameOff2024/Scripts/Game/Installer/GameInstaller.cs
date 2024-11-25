@@ -76,6 +76,7 @@ namespace GameOff2024.Game.Installer
             builder.RegisterComponentInHierarchy<DrawModalView>().As<GameModalView>();
             builder.RegisterComponentInHierarchy<LoseModalView>().As<GameModalView>();
             builder.RegisterComponentInHierarchy<PickModalView>();
+            builder.RegisterComponentInHierarchy<TopModalView>().As<GameModalView>();
             builder.RegisterComponentInHierarchy<WinModalView>().As<GameModalView>();
         }
     }

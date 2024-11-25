@@ -24,10 +24,11 @@ namespace GameOff2024.Game
     public enum GameModal
     {
         None = 0,
-        Bet = 1,
-        Lose = 2,
-        Win = 3,
-        Draw = 4,
+        Top = 1,
+        Bet = 2,
+        Lose = 3,
+        Win = 4,
+        Draw = 5,
     }
 
     public enum Skill
