@@ -15,16 +15,26 @@ namespace GameOff2024.Common.Presentation.View.Modal
 
         public virtual async UniTask ShowAsync(float duration, CancellationToken token)
         {
+            Show(duration);
+            await UniTask.Yield(token);
+        }
+
+        public void Show(float duration)
+        {
             canvasGroup.alpha = 1.0f;
             canvasGroup.blocksRaycasts = true;
-            await UniTask.Yield(token);
         }
 
         public virtual async UniTask HideAsync(float duration, CancellationToken token)
         {
+            Hide(duration);
+            await UniTask.Yield(token);
+        }
+
+        public void Hide(float duration)
+        {
             canvasGroup.alpha = 0.0f;
             canvasGroup.blocksRaycasts = false;
-            await UniTask.Yield(token);
         }
     }
 }

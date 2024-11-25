@@ -48,6 +48,8 @@ namespace GameOff2024.Game.Presentation.Presenter
             _skillUseCase.chipRate
                 .Subscribe(_skillView.Render)
                 .AddTo(_skillView);
+
+            _pickModalView.Hide(0.0f);
         }
     }
 }
