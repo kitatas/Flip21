@@ -5,5 +5,6 @@ namespace GameOff2024.Boot
         None = 0,
         Load = 1,
         Login = 2,
+        Check = 3,
     }
 }

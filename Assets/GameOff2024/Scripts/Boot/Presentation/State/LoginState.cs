@@ -32,7 +32,7 @@ namespace GameOff2024.Boot.Presentation.State
                 await RegisterAsync(token);
             }
 
-            return BootState.None;
+            return BootState.Check;
         }
 
         private async UniTask RegisterAsync(CancellationToken token)
