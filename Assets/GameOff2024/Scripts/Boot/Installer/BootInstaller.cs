@@ -22,6 +22,7 @@ namespace GameOff2024.Boot.Installer
 
             // State
             builder.Register<BaseState, LoadState>(Lifetime.Scoped);
+            builder.Register<BaseState, LoginState>(Lifetime.Scoped);
         }
     }
 }

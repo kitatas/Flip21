@@ -15,7 +15,7 @@ namespace GameOff2024.Boot.Presentation.State
         public override async UniTask<BootState> TickAsync(CancellationToken token)
         {
             await UniTask.Yield(token);
-            return BootState.None;
+            return BootState.Login;
         }
     }
 }
