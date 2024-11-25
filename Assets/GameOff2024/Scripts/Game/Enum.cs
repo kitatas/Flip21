@@ -3,13 +3,14 @@ namespace GameOff2024.Game
     public enum GameState
     {
         None = 0,
-        Pick = 1,
-        Bet = 2,
-        Deal = 3,
-        Action = 4,
-        Lose = 5,
-        Win = 6,
-        Draw = 7,
+        Top = 1,
+        Pick = 2,
+        Bet = 3,
+        Deal = 4,
+        Action = 5,
+        Lose = 6,
+        Win = 7,
+        Draw = 8,
     }
 
     public enum Suit

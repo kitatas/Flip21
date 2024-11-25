@@ -2,7 +2,7 @@ namespace GameOff2024.Game
 {
     public sealed class GameConfig
     {
-        public const GameState INIT_STATE = GameState.Pick;
+        public const GameState INIT_STATE = GameState.Top;
         public const int INIT_CARD_NUM = 2;
 
         public const int CLEAR_THRESHOLD = 100;
