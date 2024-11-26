@@ -12,6 +12,7 @@ namespace GameOff2024.Common
 
         public const int MIN_NAME_LENGTH = 3;
         public const int MAX_NAME_LENGTH = 10;
+        public const int SHOW_MAX_RANKING = 100;
     }
 
     public sealed class ModalConfig

@@ -41,5 +41,19 @@ namespace GameOff2024.Common.Data.DataStore
                 },
             };
         }
+
+        public static GetLeaderboardRequest GetLeaderboardRequest(string statisticName)
+        {
+            return new GetLeaderboardRequest
+            {
+                StatisticName = statisticName,
+                ProfileConstraints = new PlayerProfileViewConstraints
+                {
+                    ShowDisplayName = true,
+                    ShowStatistics = true,
+                },
+                MaxResultsCount = PlayFabConfig.SHOW_MAX_RANKING,
+            };
+        }
     }
 }

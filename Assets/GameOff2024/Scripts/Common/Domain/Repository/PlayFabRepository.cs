@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using GameOff2024.Common.Data.DataStore;
@@ -72,6 +74,26 @@ namespace GameOff2024.Common.Domain.Repository
                 new Exception(),
                 token
             );
+        }
+
+        public async UniTask<IEnumerable<RankingVO>> GetRankingAsync(RecordVO recordVO, CancellationToken token)
+        {
+            var response = await PlayFabHelper.CallApiAsync<GetLeaderboardRequest, GetLeaderboardResult>(
+                PlayFabRequestData.GetLeaderboardRequest(recordVO.rankingKey),
+                PlayFabClientAPI.GetLeaderboard,
+                _ => new Exception(),
+                new Exception(),
+                token
+            );
+
+            var leaderboard = response.Leaderboard;
+            if (leaderboard == null)
+            {
+                throw new Exception();
+            }
+
+            return leaderboard
+                .Select(x => new RankingVO(x, recordVO));
         }
     }
 }

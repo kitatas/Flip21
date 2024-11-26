@@ -35,8 +35,15 @@ namespace GameOff2024.Common
 
     public sealed class RecordVO
     {
+        public readonly string uid;
         public readonly Ranking ranking;
         public readonly int value;
+
+        public RecordVO(string uid, Ranking ranking)
+        {
+            this.uid = uid;
+            this.ranking = ranking;
+        }
 
         public RecordVO(Ranking ranking, int value)
         {
@@ -45,5 +52,21 @@ namespace GameOff2024.Common
         }
 
         public string rankingKey => ranking.ToKey();
+    }
+
+    public sealed class RankingVO
+    {
+        public readonly int rank;
+        public readonly string name;
+        public readonly int score;
+        public readonly bool isSelf;
+
+        public RankingVO(PlayFab.ClientModels.PlayerLeaderboardEntry entry, RecordVO record)
+        {
+            rank = entry.Position + 1;
+            name = entry.DisplayName;
+            score = entry.Profile.Statistics?.Find(x => x.Name == record.rankingKey)?.Value ?? 0;
+            isSelf = entry.PlayFabId.Equals(record.uid);
+        }
     }
 }
