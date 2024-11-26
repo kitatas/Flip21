@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using PlayFab.ClientModels;
 
 namespace GameOff2024.Common.Data.DataStore
@@ -23,6 +24,21 @@ namespace GameOff2024.Common.Data.DataStore
             return new UpdateUserTitleDisplayNameRequest
             {
                 DisplayName = userNameVO.value,
+            };
+        }
+
+        public static UpdatePlayerStatisticsRequest UpdatePlayerStatisticsRequest(RecordVO recordVO)
+        {
+            return new UpdatePlayerStatisticsRequest
+            {
+                Statistics = new List<StatisticUpdate>
+                {
+                    new StatisticUpdate()
+                    {
+                        StatisticName = recordVO.rankingKey,
+                        Value = recordVO.value,
+                    },
+                },
             };
         }
     }

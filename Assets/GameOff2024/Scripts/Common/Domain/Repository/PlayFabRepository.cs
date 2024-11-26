@@ -62,5 +62,16 @@ namespace GameOff2024.Common.Domain.Repository
 
             return true;
         }
+
+        public async UniTask SendRankingAsync(RecordVO recordVO, CancellationToken token)
+        {
+            await PlayFabHelper.CallApiAsync<UpdatePlayerStatisticsRequest, UpdatePlayerStatisticsResult>(
+                PlayFabRequestData.UpdatePlayerStatisticsRequest(recordVO),
+                PlayFabClientAPI.UpdatePlayerStatistics,
+                _ => throw new Exception(),
+                new Exception(),
+                token
+            );
+        }
     }
 }

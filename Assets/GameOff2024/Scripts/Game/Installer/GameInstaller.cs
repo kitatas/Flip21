@@ -43,6 +43,7 @@ namespace GameOff2024.Game.Installer
             builder.Register<DealUseCase>(Lifetime.Scoped);
             builder.Register<HandUseCase>(Lifetime.Scoped);
             builder.Register<ModalUseCase>(Lifetime.Scoped);
+            builder.Register<RankingUseCase>(Lifetime.Scoped);
             builder.Register<SkillUseCase>(Lifetime.Scoped);
             builder.Register<StateUseCase>(Lifetime.Scoped);
             builder.Register<TurnUseCase>(Lifetime.Scoped);
