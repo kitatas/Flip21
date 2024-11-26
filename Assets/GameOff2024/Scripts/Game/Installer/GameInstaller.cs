@@ -62,6 +62,7 @@ namespace GameOff2024.Game.Installer
             // State
             builder.Register<BaseState, ActionState>(Lifetime.Scoped);
             builder.Register<BaseState, BetState>(Lifetime.Scoped);
+            builder.Register<BaseState, ClearState>(Lifetime.Scoped);
             builder.Register<BaseState, DealState>(Lifetime.Scoped);
             builder.Register<BaseState, DrawState>(Lifetime.Scoped);
             builder.Register<BaseState, LoseState>(Lifetime.Scoped);
