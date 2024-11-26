@@ -8,6 +8,7 @@ namespace GameOff2024.Common
     public sealed class PlayFabConfig
     {
         public const string TITLE_ID = "";
+        public const string RANKING_KEY_TURN = "";
 
         public const int MIN_NAME_LENGTH = 3;
         public const int MAX_NAME_LENGTH = 10;
