@@ -28,7 +28,7 @@ namespace GameOff2024.Game.Presentation.State
             // ランキング反映待ち
             await UniTaskHelper.DelayAsync(1.0f, token);
 
-            return GameState.None;
+            return GameState.Result;
         }
     }
 }

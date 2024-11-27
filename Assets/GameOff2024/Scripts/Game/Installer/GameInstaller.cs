@@ -67,6 +67,7 @@ namespace GameOff2024.Game.Installer
             builder.Register<BaseState, DrawState>(Lifetime.Scoped);
             builder.Register<BaseState, LoseState>(Lifetime.Scoped);
             builder.Register<BaseState, PickState>(Lifetime.Scoped);
+            builder.Register<BaseState, ResultState>(Lifetime.Scoped);
             builder.Register<BaseState, TopState>(Lifetime.Scoped);
             builder.Register<BaseState, WinState>(Lifetime.Scoped);
 
@@ -84,6 +85,7 @@ namespace GameOff2024.Game.Installer
             builder.RegisterComponentInHierarchy<LoseModalView>().As<GameModalView>();
             builder.RegisterComponentInHierarchy<MainModalView>();
             builder.RegisterComponentInHierarchy<PickModalView>();
+            builder.RegisterComponentInHierarchy<RankingModalView>();
             builder.RegisterComponentInHierarchy<TopModalView>().As<GameModalView>();
             builder.RegisterComponentInHierarchy<WinModalView>().As<GameModalView>();
         }
