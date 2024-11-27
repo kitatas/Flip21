@@ -38,7 +38,7 @@ namespace GameOff2024.Game.Domain.UseCase
 
         public int GetPlayerHandsScore()
         {
-            var hands = _playerHandEntity.hands;
+            var hands = new List<int>(_playerHandEntity.hands);
             if (_upsetEntity.isUpset) hands.Add(_upsetEntity.index);
 
             return hands
@@ -48,7 +48,7 @@ namespace GameOff2024.Game.Domain.UseCase
 
         public int GetEnemyHandsScore()
         {
-            var hands = _enemyHandEntity.hands;
+            var hands = new List<int>(_enemyHandEntity.hands);
             if (_upsetEntity.isUpset) hands.Add(_upsetEntity.index);
 
             return hands
