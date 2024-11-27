@@ -11,14 +11,14 @@ namespace GameOff2024.Common.Installer
         protected override void Configure(IContainerBuilder builder)
         {
             // Entity
-            builder.Register<UserEntity>(Lifetime.Scoped);
+            builder.Register<UserEntity>(Lifetime.Singleton);
 
             // Repository
-            builder.Register<PlayFabRepository>(Lifetime.Scoped);
-            builder.Register<SaveRepository>(Lifetime.Scoped);
+            builder.Register<PlayFabRepository>(Lifetime.Singleton);
+            builder.Register<SaveRepository>(Lifetime.Singleton);
 
             // UseCase
-            builder.Register<SceneUseCase>(Lifetime.Scoped);
+            builder.Register<SceneUseCase>(Lifetime.Singleton);
         }
     }
 }
