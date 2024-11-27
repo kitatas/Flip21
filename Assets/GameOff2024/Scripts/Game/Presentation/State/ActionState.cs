@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using GameOff2024.Game.Domain.UseCase;
 using GameOff2024.Game.Presentation.View;
+using GameOff2024.Game.Utility;
 
 namespace GameOff2024.Game.Presentation.State
 {
@@ -57,14 +58,7 @@ namespace GameOff2024.Game.Presentation.State
 
             if (_actionUseCase.IsAllStand())
             {
-                var result = _handUseCase.GetResult();
-                return result switch
-                {
-                    BattleResult.Win => GameState.Win,
-                    BattleResult.Lose => GameState.Lose,
-                    BattleResult.Draw => GameState.Draw,
-                    _ => throw new Exception()
-                };
+                return _handUseCase.GetResult().ToState();
             }
 
             return GameState.Action;

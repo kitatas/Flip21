@@ -15,5 +15,16 @@ namespace GameOff2024.Game.Utility
                 _ => throw new Exception(),
             };
         }
+
+        public static GameState ToState(this BattleResult result)
+        {
+            return result switch
+            {
+                BattleResult.Win => GameState.Win,
+                BattleResult.Lose => GameState.Lose,
+                BattleResult.Draw => GameState.Draw,
+                _ => throw new Exception()
+            };
+        }
     }
 }
