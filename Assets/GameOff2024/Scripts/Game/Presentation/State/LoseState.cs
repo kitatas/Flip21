@@ -45,7 +45,7 @@ namespace GameOff2024.Game.Presentation.State
                 throw new Exception();
             }
 
-            return _chipUseCase.current > 0 ? GameState.Bet : GameState.None;
+            return _chipUseCase.current > 0 ? GameState.Bet : GameState.Finish;
         }
     }
 }

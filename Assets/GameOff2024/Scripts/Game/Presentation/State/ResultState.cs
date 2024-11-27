@@ -31,7 +31,7 @@ namespace GameOff2024.Game.Presentation.State
 
             await _rankingModalView.PopAsync(ModalConfig.DURATION, token);
 
-            return GameState.None;
+            return GameState.Finish;
         }
     }
 }
