@@ -1,5 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using UniEx;
 using UnityEngine;
 
 namespace GameOff2024.Common.Presentation.View.Modal
@@ -15,26 +17,40 @@ namespace GameOff2024.Common.Presentation.View.Modal
 
         public virtual async UniTask ShowAsync(float duration, CancellationToken token)
         {
-            Show(duration);
-            await UniTask.Yield(token);
+            await Show(duration)
+                .WithCancellation(token);
         }
 
-        public void Show(float duration)
+        public Tween Show(float duration)
         {
-            canvasGroup.alpha = 1.0f;
-            canvasGroup.blocksRaycasts = true;
+            return DOTween.Sequence()
+                .AppendCallback(() => canvasGroup.blocksRaycasts = true)
+                .Append(canvasGroup
+                    .DOFade(1.0f, duration)
+                    .SetEase(Ease.OutBack))
+                .Join(canvasGroup.transform.ToRectTransform()
+                    .DOScale(Vector3.one, duration)
+                    .SetEase(Ease.OutBack))
+                .SetLink(gameObject);
         }
 
         public virtual async UniTask HideAsync(float duration, CancellationToken token)
         {
-            Hide(duration);
-            await UniTask.Yield(token);
+            await Hide(duration)
+                .WithCancellation(token);
         }
 
-        public void Hide(float duration)
+        public Tween Hide(float duration)
         {
-            canvasGroup.alpha = 0.0f;
-            canvasGroup.blocksRaycasts = false;
+            return DOTween.Sequence()
+                .Append(canvasGroup
+                    .DOFade(0.0f, duration)
+                    .SetEase(Ease.OutQuart))
+                .Join(canvasGroup.transform.ToRectTransform()
+                    .DOScale(Vector3.one * 0.8f, duration)
+                    .SetEase(Ease.OutQuart))
+                .AppendCallback(() => canvasGroup.blocksRaycasts = false)
+                .SetLink(gameObject);
         }
     }
 }
