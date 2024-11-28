@@ -53,6 +53,8 @@ namespace GameOff2024.Common.Domain.Repository
 
         public async UniTask<bool> UpdateUserNameAsync(UserNameVO userNameVO, CancellationToken token)
         {
+            if (userNameVO.IsInvalid()) return false;
+
             // TODO: Exception
             await PlayFabHelper.CallApiAsync<UpdateUserTitleDisplayNameRequest, UpdateUserTitleDisplayNameResult>(
                 PlayFabRequestData.UpdateUserTitleDisplayNameRequest(userNameVO),
