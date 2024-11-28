@@ -47,6 +47,7 @@ namespace GameOff2024.Game.Installer
             builder.Register<SkillUseCase>(Lifetime.Scoped);
             builder.Register<StateUseCase>(Lifetime.Scoped);
             builder.Register<TurnUseCase>(Lifetime.Scoped);
+            builder.Register<UserConfigUseCase>(Lifetime.Scoped);
 
             // Presenter
             builder.UseEntryPoints(Lifetime.Scoped, entryPoints =>
@@ -57,6 +58,7 @@ namespace GameOff2024.Game.Installer
                 entryPoints.Add<SkillPresenter>();
                 entryPoints.Add<StatePresenter>();
                 entryPoints.Add<TurnPresenter>();
+                entryPoints.Add<UserConfigPresenter>();
             });
 
             // State
@@ -79,6 +81,7 @@ namespace GameOff2024.Game.Installer
             builder.RegisterComponentInHierarchy<SkillView>();
             builder.RegisterComponentInHierarchy<TableView>();
             builder.RegisterComponentInHierarchy<TurnView>();
+            builder.RegisterComponentInHierarchy<UserConfigView>();
 
             // Modal
             builder.RegisterComponentInHierarchy<BetModalView>().As<GameModalView>();

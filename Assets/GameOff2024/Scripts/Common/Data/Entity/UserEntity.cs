@@ -6,6 +6,8 @@ namespace GameOff2024.Common.Data.Entity
 
         public void Set(UserVO value) => user = value;
 
+        public void SetName(string name) => Set(new UserVO(user.uid, name));
+
         public bool IsValidName()
         {
             if (user?.name == null) return false;
