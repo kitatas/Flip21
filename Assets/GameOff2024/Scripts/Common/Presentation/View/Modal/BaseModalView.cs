@@ -9,6 +9,7 @@ namespace GameOff2024.Common.Presentation.View.Modal
     public abstract class BaseModalView : MonoBehaviour
     {
         [SerializeField] protected CanvasGroup canvasGroup = default;
+        private Tween _tween;
 
         public virtual async UniTask InitAsync(CancellationToken token)
         {
@@ -23,7 +24,8 @@ namespace GameOff2024.Common.Presentation.View.Modal
 
         public Tween Show(float duration)
         {
-            return DOTween.Sequence()
+            _tween?.Kill();
+            _tween = DOTween.Sequence()
                 .AppendCallback(() => canvasGroup.blocksRaycasts = true)
                 .Append(canvasGroup
                     .DOFade(1.0f, duration)
@@ -32,6 +34,8 @@ namespace GameOff2024.Common.Presentation.View.Modal
                     .DOScale(Vector3.one, duration)
                     .SetEase(Ease.OutBack))
                 .SetLink(gameObject);
+
+            return _tween;
         }
 
         public virtual async UniTask HideAsync(float duration, CancellationToken token)
@@ -42,7 +46,8 @@ namespace GameOff2024.Common.Presentation.View.Modal
 
         public Tween Hide(float duration)
         {
-            return DOTween.Sequence()
+            _tween?.Kill();
+            _tween = DOTween.Sequence()
                 .Append(canvasGroup
                     .DOFade(0.0f, duration)
                     .SetEase(Ease.OutQuart))
@@ -51,6 +56,8 @@ namespace GameOff2024.Common.Presentation.View.Modal
                     .SetEase(Ease.OutQuart))
                 .AppendCallback(() => canvasGroup.blocksRaycasts = false)
                 .SetLink(gameObject);
+
+            return _tween;
         }
     }
 }
