@@ -1,6 +1,8 @@
 using GameOff2024.Common.Data.Entity;
 using GameOff2024.Common.Domain.Repository;
 using GameOff2024.Common.Domain.UseCase;
+using GameOff2024.Common.Presentation.Presenter;
+using GameOff2024.Common.Presentation.View.Modal;
 using VContainer;
 using VContainer.Unity;
 
@@ -18,7 +20,17 @@ namespace GameOff2024.Common.Installer
             builder.Register<SaveRepository>(Lifetime.Singleton);
 
             // UseCase
+            builder.Register<LoadUseCase>(Lifetime.Singleton);
             builder.Register<SceneUseCase>(Lifetime.Singleton);
+
+            // Presenter
+            builder.UseEntryPoints(Lifetime.Singleton, entryPoints =>
+            {
+                entryPoints.Add<LoadPresenter>();
+            });
+
+            // View
+            builder.RegisterInstance<LoadModalView>(FindFirstObjectByType<LoadModalView>());
         }
     }
 }
