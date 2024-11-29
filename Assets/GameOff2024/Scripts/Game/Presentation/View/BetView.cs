@@ -17,8 +17,8 @@ namespace GameOff2024.Game.Presentation.View
 
         public void Init()
         {
-            plus.AddAction(() => _bet?.OnNext(1));
-            minus.AddAction(() => _bet?.OnNext(-1));
+            plus.AddAction(() => _bet?.OnNext(ChipConfig.BET_RATE));
+            minus.AddAction(() => _bet?.OnNext(ChipConfig.BET_RATE * -1));
         }
 
         public void Render(int value)

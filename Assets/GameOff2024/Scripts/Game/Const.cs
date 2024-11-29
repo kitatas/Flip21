@@ -5,7 +5,7 @@ namespace GameOff2024.Game
         public const GameState INIT_STATE = GameState.Top;
         public const int INIT_CARD_NUM = 2;
 
-        public const int CLEAR_THRESHOLD = 100;
+        public const int CLEAR_THRESHOLD = 1000000;
     }
 
     public sealed class CardConfig
@@ -51,7 +51,8 @@ namespace GameOff2024.Game
 
     public sealed class ChipConfig
     {
-        public const int INIT_VALUE = 10;
+        public const int INIT_VALUE = 100000;
+        public const int BET_RATE = 10000;
     }
 
     public sealed class ModalConfig

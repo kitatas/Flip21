@@ -1,5 +1,6 @@
 using GameOff2024.Game.Data.Entity;
 using R3;
+using UnityEngine;
 
 namespace GameOff2024.Game.Domain.UseCase
 {
@@ -19,7 +20,20 @@ namespace GameOff2024.Game.Domain.UseCase
         public Observable<bool> isMinus => _bet.Select(x => x > 0);
         public int betValue => _bet.Value;
 
-        public void Add(int value) => _bet.Value += value;
+        public void Add(int value)
+        {
+            var over = betValue % ChipConfig.BET_RATE;
+            if (over == 0)
+            {
+                _bet.Value = Mathf.Clamp(betValue + value, 0, _chipEntity.current);
+            }
+            else
+            {
+                // 端数が出ている = AllBet なので減算のみ
+                _bet.Value -= over;
+            }
+        }
+
         public void Reset() => _bet.Value = 0;
     }
 }
