@@ -20,5 +20,6 @@ namespace GameOff2024.Game.Domain.UseCase
         public int betValue => _bet.Value;
 
         public void Add(int value) => _bet.Value += value;
+        public void Reset() => _bet.Value = 0;
     }
 }

@@ -27,6 +27,8 @@ namespace GameOff2024.Game.Presentation.State
 
         public override async UniTask<GameState> TickAsync(CancellationToken token)
         {
+            _betUseCase.Reset();
+
             var isComplete = await _modalUseCase.SetUpAsync(GameModal.Bet, token);
             if (isComplete == false)
             {
