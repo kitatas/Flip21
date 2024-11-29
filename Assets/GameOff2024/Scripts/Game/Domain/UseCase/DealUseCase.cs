@@ -9,21 +9,21 @@ namespace GameOff2024.Game.Domain.UseCase
         private readonly PlayerHandEntity _playerHandEntity;
         private readonly EnemyHandEntity _enemyHandEntity;
         private readonly UpsetEntity _upsetEntity;
-        private readonly SuitRepository _suitRepository;
+        private readonly CardRepository _cardRepository;
 
         public DealUseCase(DeckEntity deckEntity, PlayerHandEntity playerHandEntity, EnemyHandEntity enemyHandEntity,
-            UpsetEntity upsetEntity, SuitRepository suitRepository)
+            UpsetEntity upsetEntity, CardRepository cardRepository)
         {
             _deckEntity = deckEntity;
             _playerHandEntity = playerHandEntity;
             _enemyHandEntity = enemyHandEntity;
             _upsetEntity = upsetEntity;
-            _suitRepository = suitRepository;
+            _cardRepository = cardRepository;
         }
 
         public void Init()
         {
-            _deckEntity.Build(x => _suitRepository.Find(x).suitVO);
+            _deckEntity.Build(_cardRepository.FindsAll());
         }
 
         public void SetUp()

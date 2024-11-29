@@ -14,16 +14,9 @@ namespace GameOff2024.Game.Data.Entity
             _cards = new List<CardVO>(CardConfig.MAX_RANK * CardConfig.SUITS.Length);
         }
 
-        public void Build(Func<Suit, SuitVO> findSuit)
+        public void Build(IEnumerable<CardVO> cards)
         {
-            foreach (var suit in CardConfig.SUITS)
-            {
-                var suitVo = findSuit?.Invoke(suit);
-                for (int i = 1; i <= CardConfig.MAX_RANK; i++)
-                {
-                    _cards.Add(new CardVO(suitVo, i));
-                }
-            }
+            _cards.AddRange(cards);
         }
 
         public void Refresh()

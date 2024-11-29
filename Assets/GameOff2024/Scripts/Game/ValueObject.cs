@@ -5,13 +5,13 @@ namespace GameOff2024.Game
 {
     public sealed class CardVO
     {
-        public readonly SuitVO suit;
         public readonly int rank;
+        public readonly Sprite sprite;
 
-        public CardVO(SuitVO suit, int rank)
+        public CardVO(int rank, Sprite sprite)
         {
-            this.suit = suit;
             this.rank = rank;
+            this.sprite = sprite;
         }
 
         public string GetRankString()
@@ -24,19 +24,6 @@ namespace GameOff2024.Game
                 13 => "K",
                 _ => rank.ToString()
             };
-        }
-    }
-
-    [Serializable]
-    public sealed class SuitVO
-    {
-        public readonly Sprite icon;
-        public readonly Color color;
-
-        public SuitVO(Sprite icon, Color color)
-        {
-            this.icon = icon;
-            this.color = color;
         }
     }
 

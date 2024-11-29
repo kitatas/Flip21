@@ -14,14 +14,14 @@ namespace GameOff2024.Game.Installer
 {
     public sealed class GameInstaller : LifetimeScope
     {
+        [SerializeField] private CardTable cardTable = default;
         [SerializeField] private SkillTable skillTable = default;
-        [SerializeField] private SuitTable suitTable = default;
 
         protected override void Configure(IContainerBuilder builder)
         {
             // DataStore
+            builder.RegisterInstance<CardTable>(cardTable);
             builder.RegisterInstance<SkillTable>(skillTable);
-            builder.RegisterInstance<SuitTable>(suitTable);
 
             // Entity
             builder.Register<ChipEntity>(Lifetime.Scoped);
@@ -33,8 +33,8 @@ namespace GameOff2024.Game.Installer
             builder.Register<UpsetEntity>(Lifetime.Scoped);
 
             // Repository
+            builder.Register<CardRepository>(Lifetime.Scoped);
             builder.Register<SkillRepository>(Lifetime.Scoped);
-            builder.Register<SuitRepository>(Lifetime.Scoped);
 
             // UseCase
             builder.Register<ActionUseCase>(Lifetime.Scoped);
