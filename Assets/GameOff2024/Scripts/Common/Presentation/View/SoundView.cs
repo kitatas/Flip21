@@ -17,5 +17,15 @@ namespace GameOff2024.Common.Presentation.View
         {
             seSource.PlayOneShot(seVO.clip);
         }
+
+        public void SetBgmVolume(float value)
+        {
+            bgmSource.volume = value;
+        }
+
+        public void SetSeVolume(float value)
+        {
+            seSource.volume = value;
+        }
     }
 }
