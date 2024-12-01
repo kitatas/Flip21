@@ -12,4 +12,11 @@ namespace GameOff2024.Common
         None = 0,
         Turn = 1,
     }
+
+    public enum Se
+    {
+        None = 0,
+        Button = 1,
+        Deal = 2,
+    }
 }

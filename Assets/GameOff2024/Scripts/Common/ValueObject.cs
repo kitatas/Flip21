@@ -1,5 +1,6 @@
 using GameOff2024.Common.Utility;
 using UniEx;
+using UnityEngine;
 
 namespace GameOff2024.Common
 {
@@ -30,6 +31,16 @@ namespace GameOff2024.Common
                 string.IsNullOrEmpty(value) ||
                 string.IsNullOrWhiteSpace(value) ||
                 value.Length.IsBetween(PlayFabConfig.MIN_NAME_LENGTH, PlayFabConfig.MAX_NAME_LENGTH) == false;
+        }
+    }
+
+    public sealed class SeVO
+    {
+        public readonly AudioClip clip;
+
+        public SeVO(AudioClip clip)
+        {
+            this.clip = clip;
         }
     }
 
