@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2f87652385c4d1ea3a71014421f6dcc, type: 3}
-  m_Name: SkillData - 4
+  m_Name: SkillData - 1
   m_EditorClassIdentifier: 
-  skillType: 4
-  skillIcon: {fileID: 1471395080, guid: 59ea64a3760b948338744aa02ac67c43, type: 3}
-  min: 25
-  max: 50
+  skillType: 1
+  skillIcon: {fileID: -322054180932699433, guid: 80df6c23eb7564d8bab4460ad2a9907c, type: 3}
+  min: 10
+  max: 20
