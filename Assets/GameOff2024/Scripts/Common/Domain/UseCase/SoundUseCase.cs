@@ -5,19 +5,23 @@ namespace GameOff2024.Common.Domain.UseCase
 {
     public sealed class SoundUseCase
     {
+        private readonly SaveRepository _saveRepository;
         private readonly SoundRepository _soundRepository;
         private readonly Subject<BgmVO> _playBgm;
         private readonly Subject<SeVO> _playSe;
         private readonly ReactiveProperty<float> _bgmVolume;
         private readonly ReactiveProperty<float> _seVolume;
 
-        public SoundUseCase(SoundRepository soundRepository)
+        public SoundUseCase(SaveRepository saveRepository, SoundRepository soundRepository)
         {
+            _saveRepository = saveRepository;
             _soundRepository = soundRepository;
             _playBgm = new Subject<BgmVO>();
             _playSe = new Subject<SeVO>();
-            _bgmVolume = new ReactiveProperty<float>(0.5f);
-            _seVolume = new ReactiveProperty<float>(0.5f);
+
+            var data = _saveRepository.Load();
+            _bgmVolume = new ReactiveProperty<float>(data.bgm);
+            _seVolume = new ReactiveProperty<float>(data.se);
         }
 
         public Observable<BgmVO> playBgm => _playBgm;
@@ -40,11 +44,13 @@ namespace GameOff2024.Common.Domain.UseCase
 
         public void SetBgmVolume(float value)
         {
+            _saveRepository.SaveBgmVolume(value);
             _bgmVolume.Value = value;
         }
 
         public void SetSeVolume(float value)
         {
+            _saveRepository.SaveSeVolume(value);
             _seVolume.Value = value;
         }
     }

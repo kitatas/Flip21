@@ -31,5 +31,19 @@ namespace GameOff2024.Common.Domain.Repository
             data.uid = uid;
             Save(data);
         }
+
+        public void SaveBgmVolume(float value)
+        {
+            var data = Load();
+            data.bgm = value;
+            Save(data);
+        }
+
+        public void SaveSeVolume(float value)
+        {
+            var data = Load();
+            data.se = value;
+            Save(data);
+        }
     }
 }
