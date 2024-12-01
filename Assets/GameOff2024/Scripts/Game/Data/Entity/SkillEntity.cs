@@ -10,8 +10,8 @@ namespace GameOff2024.Game.Data.Entity
 
         public SkillEntity()
         {
-            chipGetRate = SkillConfig.INIT_CHIP_RATE;
-            chipLostRate = SkillConfig.INIT_CHIP_RATE;
+            chipGetRate = SkillConfig.INIT_CHIP_GET_RATE;
+            chipLostRate = SkillConfig.INIT_CHIP_LOSS_RATE;
         }
 
         public void Add(SkillVO skill)
