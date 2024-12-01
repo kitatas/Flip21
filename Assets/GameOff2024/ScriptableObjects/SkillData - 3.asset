@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SkillData - 3
   m_EditorClassIdentifier: 
   skillType: 3
-  skillIcon: {fileID: 4802954496528926275, guid: 92e81a8bb495c42059f5eaa1ade0bb43, type: 3}
+  skillIcon: {fileID: -1927286336, guid: 38b5cb618fc954cfcb3f475f4c5f2b35, type: 3}
   min: 25
   max: 50
