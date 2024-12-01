@@ -12,6 +12,7 @@ namespace GameOff2024.Game.Presentation.View
         [SerializeField] private SecretCardView secretCardView = default;
         [SerializeField] private HandView player = default;
         [SerializeField] private HandView enemy = default;
+        [SerializeField] private Transform deck = default;
 
         public void Init()
         {
@@ -31,6 +32,7 @@ namespace GameOff2024.Game.Presentation.View
         public async UniTask RenderSecretCardAsync(CardVO cardVO, CancellationToken token)
         {
             var card = Instantiate(cardView, transform);
+            card.transform.localPosition = deck.localPosition;
             card.Render(cardVO);
             await secretCardView.RenderAsync(card, CardConfig.DEAL_SPEED, token);
         }
@@ -61,6 +63,7 @@ namespace GameOff2024.Game.Presentation.View
         public async UniTask CreatePlayerHandAsync(HandVO hand, CancellationToken token)
         {
             var card = Instantiate(cardView, transform);
+            card.transform.localPosition = deck.localPosition;
             card.Render(hand.card);
             await player.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
             card.Open(CardConfig.ROTATE_SPEED).WithCancellation(token).Forget();
@@ -69,6 +72,7 @@ namespace GameOff2024.Game.Presentation.View
         public async UniTask CreateEnemyHandAsync(HandVO hand, CancellationToken token)
         {
             var card = Instantiate(cardView, transform);
+            card.transform.localPosition = deck.localPosition;
             card.Render(hand.card);
             await enemy.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
         }
