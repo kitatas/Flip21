@@ -1,5 +1,11 @@
 namespace GameOff2024.Common
 {
+    public sealed class ProjectConfig
+    {
+        public const int MAJOR_VERSION = 1;
+        public const int MINOR_VERSION = 0;
+    }
+    
     public sealed class SaveConfig
     {
         public const string ES3_KEY = "";
