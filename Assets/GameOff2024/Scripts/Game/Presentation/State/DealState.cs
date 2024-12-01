@@ -1,5 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using GameOff2024.Common;
+using GameOff2024.Common.Domain.UseCase;
 using GameOff2024.Game.Domain.UseCase;
 using GameOff2024.Game.Presentation.View;
 
@@ -7,15 +9,17 @@ namespace GameOff2024.Game.Presentation.State
 {
     public sealed class DealState : BaseState
     {
+        private readonly SoundUseCase _soundUseCase;
         private readonly ActionUseCase _actionUseCase;
         private readonly DealUseCase _dealUseCase;
         private readonly HandUseCase _handUseCase;
         private readonly TurnUseCase _turnUseCase;
         private readonly TableView _tableView;
 
-        public DealState(ActionUseCase actionUseCase, DealUseCase dealUseCase, HandUseCase handUseCase,
-            TurnUseCase turnUseCase, TableView tableView)
+        public DealState(SoundUseCase soundUseCase, ActionUseCase actionUseCase, DealUseCase dealUseCase,
+            HandUseCase handUseCase, TurnUseCase turnUseCase, TableView tableView)
         {
+            _soundUseCase = soundUseCase;
             _actionUseCase = actionUseCase;
             _dealUseCase = dealUseCase;
             _handUseCase = handUseCase;
@@ -28,7 +32,7 @@ namespace GameOff2024.Game.Presentation.State
         public override async UniTask InitAsync(CancellationToken token)
         {
             _dealUseCase.Init();
-            _tableView.Init();
+            _tableView.Init(() => _soundUseCase.PlaySe(Se.Deal));
             await UniTask.Yield(token);
         }
 

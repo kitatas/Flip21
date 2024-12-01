@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -13,11 +14,13 @@ namespace GameOff2024.Game.Presentation.View
         [SerializeField] private HandView player = default;
         [SerializeField] private HandView enemy = default;
         [SerializeField] private Transform deck = default;
+        private Action _playSe;
 
-        public void Init()
+        public void Init(Action playSe)
         {
             player.Init();
             enemy.Init();
+            _playSe = playSe;
         }
 
         public async UniTask SetUpAsync(CancellationToken token)
@@ -34,6 +37,7 @@ namespace GameOff2024.Game.Presentation.View
             var card = Instantiate(cardView, transform);
             card.transform.localPosition = deck.localPosition;
             card.Render(cardVO);
+            _playSe?.Invoke();
             await secretCardView.RenderAsync(card, CardConfig.DEAL_SPEED, token);
         }
         
@@ -65,6 +69,7 @@ namespace GameOff2024.Game.Presentation.View
             var card = Instantiate(cardView, transform);
             card.transform.localPosition = deck.localPosition;
             card.Render(hand.card);
+            _playSe?.Invoke();
             await player.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
             card.Open(CardConfig.ROTATE_SPEED).WithCancellation(token).Forget();
         }
@@ -74,6 +79,7 @@ namespace GameOff2024.Game.Presentation.View
             var card = Instantiate(cardView, transform);
             card.transform.localPosition = deck.localPosition;
             card.Render(hand.card);
+            _playSe?.Invoke();
             await enemy.RenderHandAsync(card, CardConfig.DEAL_SPEED, token);
         }
 
