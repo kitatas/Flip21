@@ -34,6 +34,16 @@ namespace GameOff2024.Common
         }
     }
 
+    public sealed class BgmVO
+    {
+        public readonly AudioClip clip;
+
+        public BgmVO(AudioClip clip)
+        {
+            this.clip = clip;
+        }
+    }
+
     public sealed class SeVO
     {
         public readonly AudioClip clip;

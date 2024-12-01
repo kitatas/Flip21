@@ -18,6 +18,10 @@ namespace GameOff2024.Common.Presentation.Presenter
 
         public void PostInitialize()
         {
+            _soundUseCase.playBgm
+                .Subscribe(_soundView.PlayBgm)
+                .AddTo(_soundView);
+
             _soundUseCase.playSe
                 .Subscribe(_soundView.PlaySe)
                 .AddTo(_soundView);

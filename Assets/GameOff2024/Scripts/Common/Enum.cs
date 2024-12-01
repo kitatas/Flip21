@@ -13,6 +13,12 @@ namespace GameOff2024.Common
         Turn = 1,
     }
 
+    public enum Bgm
+    {
+        None = 0,
+        Main = 1,
+    }
+
     public enum Se
     {
         None = 0,
