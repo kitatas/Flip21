@@ -19,7 +19,8 @@ namespace GameOff2024.Game.Presentation.Presenter
         public void Start()
         {
             _chisUseCase.chip
-                .Subscribe(_chipView.Render)
+                .Pairwise()
+                .Subscribe(x => _chipView.Render(x.Previous, x.Current))
                 .AddTo(_chipView);
         }
     }

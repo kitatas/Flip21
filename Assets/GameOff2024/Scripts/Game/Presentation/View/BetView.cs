@@ -23,7 +23,7 @@ namespace GameOff2024.Game.Presentation.View
 
         public void Render(int value)
         {
-            num.text = $"{value}";
+            num.text = $"{value:N0}";
         }
 
         public void ActivatePlus(bool value)

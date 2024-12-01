@@ -46,7 +46,8 @@ namespace GameOff2024.Game.Presentation.Presenter
             }
 
             _skillUseCase.chipRate
-                .Subscribe(_skillView.Render)
+                .Pairwise()
+                .Subscribe(x => _skillView.Render(x.Previous, x.Current))
                 .AddTo(_skillView);
 
             _pickModalView.Hide(0.0f);

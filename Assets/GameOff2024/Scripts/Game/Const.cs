@@ -61,4 +61,9 @@ namespace GameOff2024.Game
         public const float ACTIVATE_BLUR_VALUE = 1.5f;
         public const float DEACTIVATE_BLUR_VALUE = 3.0f;
     }
+
+    public sealed class UiConfig
+    {
+        public const float COUNT_UP_DURATION = 0.5f;
+    }
 }
