@@ -56,13 +56,6 @@ namespace GameOff2024.Game
         public const int BET_RATE = 10000;
     }
 
-    public sealed class ModalConfig
-    {
-        public const float DURATION = 0.25f;
-        public const float ACTIVATE_BLUR_VALUE = 1.5f;
-        public const float DEACTIVATE_BLUR_VALUE = 3.0f;
-    }
-
     public sealed class UiConfig
     {
         public const float COUNT_UP_DURATION = 0.5f;
