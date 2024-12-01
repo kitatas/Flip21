@@ -30,7 +30,7 @@ namespace GameOff2024.Common.Presentation.View.Button
         {
             _tween?.Kill(true);
             _tween = transform
-                .DOScale(Vector3.one * 0.8f, ButtonConfig.DURATION)
+                .DOScale(Vector3.one * 0.95f, ButtonConfig.DURATION)
                 .SetEase(Ease.Linear)
                 .SetLink(gameObject);
         }
