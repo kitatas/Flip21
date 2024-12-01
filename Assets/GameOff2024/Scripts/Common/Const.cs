@@ -19,4 +19,9 @@ namespace GameOff2024.Common
     {
         public const float DURATION = 0.25f;
     }
+
+    public sealed class ButtonConfig
+    {
+        public const float DURATION = 0.1f;
+    }
 }
