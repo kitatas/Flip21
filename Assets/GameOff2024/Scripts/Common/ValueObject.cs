@@ -52,6 +52,7 @@ namespace GameOff2024.Common
         }
 
         public string rankingKey => ranking.ToKey();
+        public int sendValue => value * -1;
     }
 
     public sealed class RankingVO
@@ -65,7 +66,7 @@ namespace GameOff2024.Common
         {
             rank = entry.Position + 1;
             name = entry.DisplayName;
-            score = entry.Profile.Statistics?.Find(x => x.Name == record.rankingKey)?.Value ?? 0;
+            score = entry.Profile.Statistics?.Find(x => x.Name == record.rankingKey)?.Value * -1 ?? 0;
             isSelf = entry.PlayFabId.Equals(record.uid);
         }
     }

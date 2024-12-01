@@ -36,7 +36,7 @@ namespace GameOff2024.Common.Data.DataStore
                     new StatisticUpdate()
                     {
                         StatisticName = recordVO.rankingKey,
-                        Value = recordVO.value,
+                        Value = recordVO.sendValue,
                     },
                 },
             };
