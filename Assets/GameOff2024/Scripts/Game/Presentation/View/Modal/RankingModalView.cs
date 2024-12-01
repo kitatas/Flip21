@@ -25,9 +25,15 @@ namespace GameOff2024.Game.Presentation.View.Modal
 
         public async UniTask PopAsync(float duration, CancellationToken token)
         {
-            await ShowAsync(duration, token);
+            await (
+                ShowAsync(duration, token),
+                TweenBlurAsync(ModalConfig.ACTIVATE_BLUR_VALUE, duration, token)
+            );
             await decision.OnClickAsync(token);
-            await HideAsync(duration, token);
+            await (
+                HideAsync(duration, token),
+                TweenBlurAsync(ModalConfig.DEACTIVATE_BLUR_VALUE, duration, token)
+            );
         }
     }
 }

@@ -3,12 +3,15 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UniEx;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace GameOff2024.Common.Presentation.View.Modal
 {
     public abstract class BaseModalView : MonoBehaviour
     {
         [SerializeField] protected CanvasGroup canvasGroup = default;
+        [SerializeField] private Volume volume = default;
         private Tween _tween;
 
         public virtual async UniTask InitAsync(CancellationToken token)
@@ -58,6 +61,21 @@ namespace GameOff2024.Common.Presentation.View.Modal
                 .SetLink(gameObject);
 
             return _tween;
+        }
+
+        protected async UniTask TweenBlurAsync(float value, float duration, CancellationToken token)
+        {
+            volume.profile.TryGet(out DepthOfField depthOfField);
+            if (depthOfField)
+            {
+                await DOTween
+                    .To(
+                        () => depthOfField.focusDistance.value,
+                        x => depthOfField.focusDistance.value = x,
+                        value,
+                        duration)
+                    .WithCancellation(token);
+            }
         }
     }
 }
