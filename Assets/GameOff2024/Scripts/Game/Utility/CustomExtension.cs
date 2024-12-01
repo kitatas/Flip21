@@ -8,10 +8,10 @@ namespace GameOff2024.Game.Utility
         {
             return skill switch
             {
-                Skill.ChipGetUp => "Increase chip acquisition amount by {0}%",
-                Skill.ChipLostDown => "Reduce chip loss by {0}%",
-                Skill.ChipGetLostUp => "Increased chip gain and chip loss by {0}%",
-                Skill.ChipGetLostDown => "Reduce chip gain and chip loss by {0}%",
+                Skill.ChipGetUp => "Get chip rate +{0}",
+                Skill.ChipLostDown => "Loss chip rate -{0}",
+                Skill.ChipGetLostUp => "Get & Loss chip rate +{0}",
+                Skill.ChipGetLostDown => "Get & Loss chip rate -{0}",
                 _ => throw new Exception(),
             };
         }
