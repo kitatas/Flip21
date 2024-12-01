@@ -59,6 +59,7 @@ namespace GameOff2024.Game.Installer
                 entryPoints.Add<StatePresenter>();
                 entryPoints.Add<TurnPresenter>();
                 entryPoints.Add<UserConfigPresenter>();
+                entryPoints.Add<VolumePresenter>();
             });
 
             // State
@@ -82,6 +83,7 @@ namespace GameOff2024.Game.Installer
             builder.RegisterComponentInHierarchy<TableView>();
             builder.RegisterComponentInHierarchy<TurnView>();
             builder.RegisterComponentInHierarchy<UserConfigView>();
+            builder.RegisterComponentInHierarchy<VolumeView>();
 
             // Modal
             builder.RegisterComponentInHierarchy<BetModalView>().As<GameModalView>();

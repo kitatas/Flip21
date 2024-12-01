@@ -24,6 +24,7 @@ namespace GameOff2024.Common.Domain.UseCase
         public Observable<SeVO> playSe => _playSe;
         public Observable<float> bgmVolume => _bgmVolume;
         public Observable<float> seVolume => _seVolume;
+        public (float bgm, float se) volume => (_bgmVolume.Value, _seVolume.Value);
 
         public void PlayBgm(Bgm bgm)
         {
@@ -35,6 +36,16 @@ namespace GameOff2024.Common.Domain.UseCase
         {
             var record = _soundRepository.Find(se);
             _playSe?.OnNext(record);
+        }
+
+        public void SetBgmVolume(float value)
+        {
+            _bgmVolume.Value = value;
+        }
+
+        public void SetSeVolume(float value)
+        {
+            _seVolume.Value = value;
         }
     }
 }
