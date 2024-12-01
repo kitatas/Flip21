@@ -90,19 +90,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3447587293978986479, guid: 775d85852dee348e4bed403f6c6231a3, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.80784315
       objectReference: {fileID: 0}
     - target: {fileID: 3447587293978986479, guid: 775d85852dee348e4bed403f6c6231a3, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.77254903
       objectReference: {fileID: 0}
     - target: {fileID: 3447587293978986479, guid: 775d85852dee348e4bed403f6c6231a3, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.76862746
       objectReference: {fileID: 0}
     - target: {fileID: 8841339386110623609, guid: 775d85852dee348e4bed403f6c6231a3, type: 3}
       propertyPath: m_Name
-      value: Image - record Variant
+      value: Image - record
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -126,6 +126,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1024248996643184186, guid: 775d85852dee348e4bed403f6c6231a3, type: 3}
   m_PrefabInstance: {fileID: 800053651252266283}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2648704742873744068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3447587293978986479, guid: 775d85852dee348e4bed403f6c6231a3, type: 3}
+  m_PrefabInstance: {fileID: 800053651252266283}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8190046450297502290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8190046450297502290 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8841339386110623609, guid: 775d85852dee348e4bed403f6c6231a3, type: 3}
@@ -143,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea3d5095e3b484ea06e1366294477d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: {fileID: 2648704742873744068}
   rank: {fileID: 3783169077040470626}
   userName: {fileID: 960573980457599698}
   score: {fileID: 2218033465220297442}
@@ -506,7 +518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2057288341659483730, guid: 304f1b55f168043d0bdbbcf968f39060, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 100
+      value: 135
       objectReference: {fileID: 0}
     - target: {fileID: 2057288341659483730, guid: 304f1b55f168043d0bdbbcf968f39060, type: 3}
       propertyPath: m_AnchoredPosition.y
