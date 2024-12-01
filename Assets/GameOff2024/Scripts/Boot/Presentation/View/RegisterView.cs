@@ -17,7 +17,10 @@ namespace GameOff2024.Boot.Presentation.View
         {
             inputField.text = "user" + $"{Random.Range(0, 1000000):000000}";
 
-            await ShowAsync(ModalConfig.DURATION, token);
+            await (
+                ShowAsync(ModalConfig.DURATION, token),
+                TweenBlurAsync(ModalConfig.DEACTIVATE_BLUR_VALUE, ModalConfig.DURATION, token)
+            );
             await button.OnClickAsync(token);
             await HideAsync(ModalConfig.DURATION, token);
 
