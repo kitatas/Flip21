@@ -272,7 +272,7 @@
       }
     },
     "jp.hadashikick.vcontainer": {
-      "version": "1.16.4",
+      "version": "1.16.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
