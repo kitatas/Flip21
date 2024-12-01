@@ -5,6 +5,7 @@ using GameOff2024.Game.Domain.UseCase;
 using GameOff2024.Game.Presentation.Presenter;
 using GameOff2024.Game.Presentation.State;
 using GameOff2024.Game.Presentation.View;
+using GameOff2024.Game.Presentation.View.Button;
 using GameOff2024.Game.Presentation.View.Modal;
 using UnityEngine;
 using VContainer;
@@ -84,6 +85,9 @@ namespace GameOff2024.Game.Installer
             builder.RegisterComponentInHierarchy<TurnView>();
             builder.RegisterComponentInHierarchy<UserConfigView>();
             builder.RegisterComponentInHierarchy<VolumeView>();
+
+            // Button
+            builder.RegisterComponentInHierarchy<HomeButtonView>();
 
             // Modal
             builder.RegisterComponentInHierarchy<BetModalView>().As<GameModalView>();
